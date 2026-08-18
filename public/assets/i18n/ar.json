@@ -1,0 +1,24 @@
+{
+  "add_academy": "إضافة أكادمية",
+  "search":"بحــــت بالكود , الاسم",
+  "academic_name" : "اسم الأكادمية",
+  "id": "الكود",
+  "edit_academy": "تعديل ",
+  "delete_academy": "حذف ",
+   "delete_the_academy" : "هل أنت متاكد من حذف هذه الأكاديمية ؟",
+  "academy_deleted": "تم حذف الاكاديمية بنجاح.",
+   "mobile_number": "رقم الهاتف",
+   "code": "الكود",
+   "password": "كلمة المرور",
+    "login": "تسجيل الدخول",
+    "do_not_have_account": "ليس لديك حساب؟",
+    "welcome_title": "مرحبا بك في أكاديميتك",
+    "enter_information_login": "قم بتسجيل الدخول إلى حسابك للوصول إلى لوحة التحكم الخاصة بك وإدارة بياناتك وخدماتك بسهولة وأمان.",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "reset_password": "إعادة تعيين كلمة المرور",
+    "academy_name": "اسم الأكاديمية",
+    "phone_number": "رقم الهاتف",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+
+}

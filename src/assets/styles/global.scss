@@ -157,7 +157,7 @@ $space_gaps: 2rem;
 }
 
 li.current {
-  border: 1px solid #66c7c7 !important;
+  border: 1px solid $primary !important;
 }
 
 .ngx-pagination>li:not(.small-screen) {
@@ -182,8 +182,8 @@ li.current {
 }
 
 .ngx-pagination>li.current {
-  background: #ddf3f3 !important;
-  color: #66c7c7 !important;
+  background: $primary !important;
+  color: white !important;
 }
 
 .ngx-pagination>li.pagination-next,
@@ -257,4 +257,9 @@ li.current {
 // hide licensing  banner message in survey creator
 .svc-creator__banner {
   display: none !important;
+}
+
+
+.input, .ng2-flatpickr-input.form-control {
+    padding: 0.5rem 1.1rem !important;
 }

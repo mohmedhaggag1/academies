@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.html',
-  styleUrl: './admin.scss',
+  selector: 'app-auth',
   imports: [RouterOutlet],
+  templateUrl: './auth.html',
+  styleUrl: './auth.scss',
 })
-export class Admin {
-
-}
+export class Auth {}

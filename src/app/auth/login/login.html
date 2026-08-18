@@ -1,0 +1,64 @@
+<div class="w-100 flex jcc" style="height: 100vh">
+  <div class="" style="position: absolute; top: 1rem; inset-inline-start: 0; z-index: 1000; margin: 2rem">
+    <language></language>
+  </div>
+
+  <div class="w-50 h-100 left-welcome">
+    <app-left [data]="{
+        desc: 'enter_information_login',
+      }">
+      <p class="bold primary">
+        {{ "welcome_title" | translate }}
+      </p>
+    </app-left>
+  </div>
+
+  <div class="h-100 right-welcome">
+    <div class="flex-center h-100">
+      <form class="w-100 mt-2 form" [formGroup]="form">
+        <div class="mb-4">
+          <h1 class="mt-1">{{ "login" | translate }}</h1>
+          <p class="fs-13 mt-1">{{ "enter_information_login" | translate }}</p>
+        </div>
+
+        <!-- Email Input -->
+        <escoba-input key="code" [control]="f['email']">
+          <input type="email" class="input" name="email" [attr.placeholder]="'email' | translate"
+            formControlName="email" />
+        </escoba-input>
+
+        <!-- Password Input -->
+        <div class="password mt-1">
+          <input-password key="password" [control]="f['password']" (getType)="passwordType = $event">
+            <input [type]="passwordType" class="input" name="password" [attr.placeholder]="'password' | translate"
+              formControlName="password" />
+          </input-password>
+        </div>
+
+        <div class="flex-center jcfe mt-1 mb-4">
+          <!--          <div class="flex-center">-->
+          <!--            <input-->
+          <!--              type="checkbox"-->
+          <!--              id="rememberCheckbox"-->
+          <!--              name="rememberCheckbox"-->
+          <!--              formControlName="rememberCheckbox">-->
+          <!--            <label class="fs-13 bold" for="rememberCheckbox">{{ 'remember' | translate }} </label>-->
+          <!--          </div>-->
+          <a class="fs-13 pointer bold primary" routerLink="/auth/forgot-password">{{ "forgot_password" | translate
+            }}</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="clickable-btn bg-primary py-1 w-100 rounded bold fs-18" [disabled]="loading" (click)="submit()">
+          <submit-button [text]="'login'" [loading]="loading" />
+        </button>
+
+        <!-- <div class="mt-1 text-center">
+          <span class="fs-13 bold dark">{{ "do_not_have_account" | translate }}
+          </span>
+          <a class="fs-13 pointer bold primary underline" routerLink="/auth/register">{{ "sign_up" | translate }}</a>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</div>

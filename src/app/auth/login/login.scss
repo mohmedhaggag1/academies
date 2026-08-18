@@ -1,0 +1,31 @@
+.right-welcome {
+    width: 50%;
+}
+
+.form {
+    max-width: 60%;
+}
+
+.form-icon {
+    width: 40px; 
+    height: 42px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.4);
+    margin: 0 5px; 
+}
+
+@media (max-width: 767px) {
+    .form {
+        max-width: 100%;
+    }
+
+    .right-welcome {
+        width: 90%;
+    }
+
+    .left-welcome {
+        display: none;
+    }
+}
