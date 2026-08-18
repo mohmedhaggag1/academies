@@ -1,0 +1,111 @@
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+    selector: 'loading',
+    imports: [CommonModule],
+    template: `
+    <div class="loading">
+      <div class="effect-1 effects"></div>
+      <div class="effect-2 effects"></div>
+      <div class="effect-3 effects"></div>
+    </div>
+  `,
+    styles: [`
+    #loading-bg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    .loading-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -330%);
+    }
+
+    .loading {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 3px solid transparent;
+    }
+
+    .loading .effect-1,
+    .loading .effect-2 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-left: 3px solid #242730;
+      border-radius: 50%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .loading .effect-1 {
+      animation: rotate 1s ease infinite;
+    }
+
+    .loading .effect-2 {
+      animation: rotateOpacity 1s ease infinite 0.1s;
+    }
+
+    .loading .effect-3 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-left: 3px solid #242730;
+      -webkit-animation: rotateOpacity 1s ease infinite 0.2s;
+      animation: rotateOpacity 1s ease infinite 0.2s;
+      border-radius: 50%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .loading .effects {
+      transition: all 0.3s ease;
+    }
+
+    @keyframes rotate {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn);
+      }
+    }
+
+    @keyframes rotateOpacity {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 0.1;
+      }
+
+      100% {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn);
+        opacity: 1;
+      }
+    }
+  `]
+})
+export class LoadingComponent {
+
+}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -8,6 +8,10 @@ import { RectangleSkeletonComponent } from '../core/components/rectangle-skeleto
 import { MagicScrollDirective } from '../core/directives/magic-scroll.directive';
 import { MatMenuModule } from '@angular/material/menu';
 import { LanguageComponent } from "../core/components/language.component";
+import { MatDialog } from '@angular/material/dialog';
+import { AcademyIdFormComponent } from '../core/components/academy-id-form-component/academy-id-form-component';
+import { ConfirmationMessageComponent } from '../core/components/confirmation-message.component';
+import { NotFoundComponent } from "../core/components/not-found.component";
 
 @Component({
   selector: 'app-admin',
@@ -23,32 +27,16 @@ import { LanguageComponent } from "../core/components/language.component";
     RectangleSkeletonComponent,
     MagicScrollDirective,
     MatMenuModule,
-    LanguageComponent
+    LanguageComponent,
+    NotFoundComponent
 ]
 })
 export class Admin {
 
-  // =========================
-  // Loading
-  // =========================
-
   loading = false;
-
-
-  // =========================
-  // Pagination
-  // =========================
-
   currentPage = 1;
-
   pageSize = 15;
-
   maxSize = 7;
-
-
-  // =========================
-  // Static Data
-  // =========================
 
   allHouseUnits = [
 
@@ -189,11 +177,17 @@ export class Admin {
 
 
   houseUnits = [...this.allHouseUnits];
+  dialog = inject(MatDialog);
 
-deleteAcademy (){}
-  // =========================
-  // Search
-  // =========================
+  academyIdForm(academyId?: any) {
+    this.dialog.open(AcademyIdFormComponent, {
+      autoFocus: false,
+      panelClass: 'medium-dialog',
+      data: {
+        academyId,
+      },
+    });
+  }
 
   search(value: any): void {
 
@@ -254,56 +248,36 @@ deleteAcademy (){}
 
   }
 
+  deleteAcademy() {
+    let dialogRef = this.dialog.open(ConfirmationMessageComponent, {
+      panelClass: 'small-dialog',
+      data: {
+        btn_name: 'confirm',
+        message: 'delete_the_academy',
+        classes: 'bg-danger',
+      },
+    });
 
-  // =========================
-  // Add
-  // =========================
-
-  addHouseUnit(): void {
-
-    const newId =
-      this.allHouseUnits.length + 1;
-
-
-    const newUnit = {
-
-      id: newId,
-
-      buildingName: 'Building A',
-
-      floorName: 'New Floor',
-
-      name: `Unit ${100 + newId}`,
-
-      userName: 'New User'
-
-    };
-
-
-    this.allHouseUnits.push(newUnit);
-
-
-    this.houseUnits = [
-      ...this.allHouseUnits
-    ];
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        // this.service.deleteFloor(buildId).subscribe((_res: any) => {
+        //   if (_res.success) {
+        //     this.alert.showAlert('academy_deleted');
+        //     this.dialog.closeAll();
+        //     this.service.hasChanged.next(true);
+        //   }
+        // });
+      }
+    });
+  
 
   }
 
-
-  // =========================
-  // Page Changed
-  // =========================
 
   pageChanged(page: number): void {
-
     this.currentPage = page;
-
   }
 
-
-  // =========================
-  // Track By
-  // =========================
 
   trackBy(
     index: number,

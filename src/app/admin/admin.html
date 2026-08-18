@@ -1,91 +1,46 @@
 <div class="floors flex-column gap-y-2 h-100 p-5">
-<language></language>
-
-    <!-- ========================================= -->
-    <!-- TOP SECTION -->
-    <!-- ========================================= -->
+    <language></language>
 
     <div class="top-section flex aic gap-x-2">
-
-
-        <!-- SEARCH -->
-
         <div class="flex-auto">
-
-            <search searchPlaceHolder="search_by_house_unit" (valueChanged)="search($event)">
-            </search>
-
+            <search searchPlaceHolder="search" (valueChanged)="search($event)"></search>
         </div>
-
-
-        <!-- ADD -->
-
         <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
-            (click)="addHouseUnit()">
-
+            (click)="academyIdForm()">
             <span>
-                {{ 'add_house_unit' | translate }}
+                {{ 'add_academy' | translate }}
             </span>
-
         </button>
-
     </div>
 
 
-
-    <!-- ========================================= -->
-    <!-- TABLE -->
-    <!-- ========================================= -->
-
     <div class="table-data bg-white relative height-without-tabs" magicScroll>
-
-
         @if (!loading) {
-
         <table class="table w-100 rounded bg-white">
-
-
-            <!-- ======================================= -->
-            <!-- HEADER -->
-            <!-- ======================================= -->
-
             <thead>
-
                 <tr class="primary">
 
                     <th class="text-left">
-                        ID
+                        {{'id' | translate}}
                     </th>
 
                     <th class="text-left">
-                        {{ 'floor' | translate }}
+                        {{ 'academic_name' | translate }}
                     </th>
 
                     <th class="text-left">
-                        {{ 'house_unit' | translate }}
+                        {{ 'mobile_number' | translate }}
                     </th>
 
-                    <th class="text-left">
-                        {{ 'user' | translate }}
-                    </th>
                     <th></th>
 
                 </tr>
 
             </thead>
 
-
-
-            <!-- ======================================= -->
-            <!-- BODY -->
-            <!-- ======================================= -->
-
             <tbody>
 
-
                 @if (houseUnits.length > 0) {
-
-
                 <tr class="black rounded" *ngFor="
                 let houseUnit of houseUnits
                   | paginate : {
@@ -95,9 +50,6 @@
 
                 trackBy: trackBy
               ">
-
-
-                    <!-- ID -->
 
                     <td class="text-left px-2">
 
@@ -124,21 +76,9 @@
 
                     </td>
 
-
-                    <!-- HOUSE UNIT -->
-
                     <td class="text-left">
 
                         {{ houseUnit.name }}
-
-                    </td>
-
-
-                    <!-- USER -->
-
-                    <td class="text-left">
-
-                        {{ houseUnit.userName || '---' }}
 
                     </td>
 
@@ -153,13 +93,14 @@
                             <button mat-menu-item>
                                 <div class="flex aic">
                                     <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
-                                    <p class="ml-1">{{ "edit_floor" | translate }}</p>
+                                    <p class="ml-1">{{ "edit_academy" | translate }}</p>
                                 </div>
                             </button>
-                            <button mat-menu-item (click)="deleteAcademy()">
-                                <div class="flex aic">
+
+                            <button mat-menu-item>
+                                <div class="flex aic" (click)="deleteAcademy()">
                                     <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
-                                    <p class="ml-1">{{ "delete_floor_map" | translate }}</p>
+                                    <p class="ml-1">{{ "delete_academy" | translate }}</p>
                                 </div>
                             </button>
                         </div>
@@ -168,55 +109,27 @@
 
                 }
 
-
-                <!-- ===================================== -->
-                <!-- NO DATA -->
-                <!-- ===================================== -->
-
                 @if (houseUnits.length === 0) {
-
                 <tr>
-
                     <td colspan="4" class="text-center py-3">
-
-                        No Data Found
-
+                        <not-found />
                     </td>
-
                 </tr>
-
                 }
-
-
             </tbody>
 
         </table>
 
         }
 
-
-        <!-- ========================================= -->
-        <!-- LOADING -->
-        <!-- ========================================= -->
-
         @if (loading) {
-
-        <rectangle-skeleton class="w-100 h-100">
-        </rectangle-skeleton>
-
+        <rectangle-skeleton class="w-100 h-100" />
         }
 
     </div>
 
-
-
-    <!-- ========================================= -->
-    <!-- PAGINATION -->
-    <!-- ========================================= -->
-
     @if (
-    houseUnits.length > pageSize &&
-    !loading
+    houseUnits.length > pageSize &&  !loading
     ) {
 
     <div class="flex-center">
@@ -229,6 +142,4 @@
     </div>
 
     }
-
-
 </div>

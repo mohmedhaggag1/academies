@@ -16,15 +16,16 @@ export class App {
   }
 
   ngOnInit(): void {
+    this.setLanguage()
   }
 
-  // setLanguage() {
-  //   // this language will be used as a fallback when a translation isn't found in the current language
-  //   this.translate.setDefaultLang('en');
+  setLanguage() {
+    // this language will be used as a fallback when a translation isn't found in the current language
+    this.translate.setDefaultLang('en');
 
-  //   // the lang to use, if the lang isn't available, it will use the current loader to get them
-  //   this.translate.use(this.language);
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    this.translate.use(this.language);
 
-  //   document.dir = this.language === 'ar' ? 'rtl' : 'ltr';
-  // }
+    document.dir = this.language === 'ar' ? 'rtl' : 'ltr';
+  }
 }

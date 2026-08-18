@@ -1,0 +1,48 @@
+<div class="building-form relative">
+  <div class="close img pointer" mat-dialog-close>
+    <img src="/icons/close.svg" alt="close icon" width="25" />
+  </div>
+
+  <div class="text-center" mat-dialog-title>
+    <h3>{{ (this.data.floorId ? "edit_academy" : "add_academy") | translate }}</h3>
+  </div>
+
+  <ng-container *ngIf="!dialogContentLoading">
+    <div mat-dialog-content>
+      <form [formGroup]="form">
+        <div class="flex-grid">
+          <div class="col-lg-6">
+            <div class="name mb-1">
+              <escoba-input key="english_name" [control]="f['nameEn']">
+                <input type="text" class="input" formControlName="nameEn" />
+              </escoba-input>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="name mb-1">
+              <escoba-input key="arabic_name" [control]="f['nameAr']">
+                <input type="text" class="input" formControlName="nameAr" />
+              </escoba-input>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="dialogContentLoading">
+    <div class="py-5">
+      <loading />
+    </div>
+  </ng-container>
+
+  <div mat-dialog-actions>
+    <button
+      class="clickable-btn bg-primary py-1 w-100 rounded bold fs-18"
+      [disabled]="this.form.invalid || this.form.untouched || loading"
+      (click)="submit()"
+    >
+      <submit-button [loading]="loading" [text]="'save'" />
+    </button>
+  </div>
+</div>
