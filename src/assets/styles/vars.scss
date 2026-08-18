@@ -1,0 +1,139 @@
+$primary: #002579;
+$dark: #121212;
+$light-primary: rgba(0, 37, 121, 0.034);
+$secondary: #1aacac;
+$green: #00b5ad;
+$dark-color: #707070;
+$gray: #faf9fd;
+$success: #29cc99;
+$danger: #ea5455;
+$canceled: #c7c7cc;
+$warning: #f69e42;
+$dark-white: #283046;
+$dark-gray: #161d31;
+$white-color: #fff;
+$dark-border: #404656;
+$border-color: #e7e7e7;
+$closed: rgba(234, 84, 85, 0.53);
+
+
+:root {
+  --primary: #002579;
+  --light-primary: rgba(0, 37, 121, 0.034);
+  --secondary: #1aacac;
+  --green: #00b5ad;
+  --dark-color: #707070;
+  --gray: #faf9fd;
+  --success: #29cc99;
+  --danger: #ea5455;
+  --canceled: #c7c7cc;
+  --warning: #f69e42;
+  --dark-white: #283046;
+  --dark-gray: #161d31;
+  --white-color: #b4b7bd;
+  --dark-border: #404656;
+  --border-color: #e7e7e7;
+  --closed: rgba(234, 84, 85, 0.53);
+}
+
+.light-primary {
+  color: $light-primary !important;
+}
+
+.bg-light-primary {
+  background: $light-primary !important;
+}
+
+.light-primary-6 {
+  color: rgba($primary, 0.6) !important;
+}
+
+.bg-light-primary-06 {
+  background: rgba($primary, 0.06) !important;
+}
+
+.bg-light-primary-10 {
+  background: rgba($primary, 0.1) !important;
+}
+
+.primary {
+  color: $primary !important;
+}
+
+.secondary {
+  color: $secondary !important;
+}
+
+.white-color {
+  color: var(--white-color) !important;
+}
+
+.bg-primary {
+  background: $primary !important;
+  color: #fff !important;
+}
+
+.bg-secondary {
+  background: $secondary !important;
+  color: #fff !important;
+}
+
+.bg-green {
+  background: $green !important;
+  color: #fff !important;
+}
+
+.primary-dark {
+  color: $dark !important;
+}
+
+.closed-color {
+  color: $closed !important;
+}
+
+.bg-closed-color {
+  background: $closed !important;
+}
+
+.bg-archived {
+  background: #c5c5c5 !important;
+}
+
+.bg-light-success-1 {
+  color: #29cc99b5;
+  background-color: #f7fffa;
+}
+
+.bg-light-primary-1 {
+  color: #7b58ca;
+  background-color: #fbf9ff !important;
+}
+
+.bg-light-warning-2 {
+  color: $warning;
+  background-color: rgba($warning, 0.2) !important;
+}
+
+.bg-light-primary-2 {
+  color: $primary;
+  background-color: rgba($primary, 0.2) !important;
+}
+
+.bg-light-success-2 {
+  color: $success;
+  background-color: rgba($success, 0.1) !important;
+}
+
+.bg-light-canceled-2 {
+  color: $canceled;
+  background-color: rgba($canceled, 0.2) !important;
+}
+
+.bg-light-danger-1 {
+  color: #ea5455;
+  background-color: #fff3f3;
+}
+
+.border-primary {
+  border: 1px solid $primary !important;
+}

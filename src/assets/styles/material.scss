@@ -1,0 +1,145 @@
+:root:dir(ltr) {
+  --mat-stepper-container-text-font: "Montserrat", sans-serif;
+  --mat-stepper-header-label-text-font: "Montserrat", sans-serif;
+}
+
+:root:dir(rtl) {
+  --mat-stepper-container-text-font: "Readex Pro", serif;
+  --mat-stepper-header-label-text-font: "Readex Pro", serif;
+}
+
+.mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: var(--primary);
+    --mdc-linear-progress-track-color: rgba(63, 81, 181, 0.25);
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: inherit !important;
+}
+
+.mdc-checkbox {
+  --mdc-checkbox-selected-focus-icon-color: var(--primary);
+  --mdc-checkbox-selected-hover-icon-color: var(--primary);
+  --mdc-checkbox-selected-icon-color: var(--primary);
+  --mdc-checkbox-selected-pressed-icon-color: var(--primary);
+  --mdc-checkbox-selected-focus-state-layer-color: var(--primary);
+  --mdc-checkbox-selected-hover-state-layer-color: var(--primary);
+  --mdc-checkbox-selected-pressed-state-layer-color: var(--primary);
+}
+
+html .mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-focus-state-layer-opacity: 0.12;
+  --mdc-switch-selected-hover-state-layer-opacity: 0.08;
+  --mdc-switch-selected-pressed-state-layer-opacity: 0.12;
+  --mdc-switch-unselected-focus-state-layer-opacity: 0.12;
+  --mdc-switch-unselected-hover-state-layer-opacity: 0.08;
+  --mdc-switch-unselected-pressed-state-layer-opacity: 0.12;
+  --mdc-switch-selected-focus-state-layer-color: var(--primary);
+  --mdc-switch-selected-handle-color: #ffffff;
+  --mdc-switch-selected-hover-state-layer-color: var(--primary);
+  --mdc-switch-selected-pressed-state-layer-color: var(--primary);
+  --mdc-switch-selected-focus-handle-color: #dce1ff;
+  --mdc-switch-selected-hover-handle-color: #dce1ff;
+  --mdc-switch-selected-pressed-handle-color: #dce1ff;
+  --mdc-switch-selected-focus-track-color: var(--primary);
+  --mdc-switch-selected-hover-track-color: var(--primary);
+  --mdc-switch-selected-pressed-track-color: var(--primary);
+  --mdc-switch-selected-track-color: var(--primary);
+  --mdc-switch-disabled-selected-handle-color: #fefbff;
+  --mdc-switch-disabled-selected-icon-color: #1a1b21;
+  --mdc-switch-disabled-selected-track-color: #1a1b21;
+  --mdc-switch-disabled-unselected-handle-color: #1a1b21;
+  --mdc-switch-disabled-unselected-icon-color: #e1e1f0;
+  --mdc-switch-disabled-unselected-track-color: #e1e1f0;
+  --mdc-switch-selected-icon-color: #001550;
+  --mdc-switch-unselected-focus-handle-color: #444651;
+  --mdc-switch-unselected-focus-state-layer-color: #1a1b21;
+  --mdc-switch-unselected-focus-track-color: #e1e1f0;
+  --mdc-switch-unselected-handle-color: #757683;
+  --mdc-switch-unselected-hover-handle-color: #444651;
+  --mdc-switch-unselected-hover-state-layer-color: #1a1b21;
+  --mdc-switch-unselected-hover-track-color: #e1e1f0;
+  --mdc-switch-unselected-icon-color: #e1e1f0;
+  --mdc-switch-unselected-pressed-handle-color: #444651;
+  --mdc-switch-unselected-pressed-state-layer-color: #1a1b21;
+  --mdc-switch-unselected-pressed-track-color: #e1e1f0;
+  --mdc-switch-unselected-track-color: #e1e1f0;
+  --mdc-switch-disabled-selected-icon-opacity: 0.38;
+  --mdc-switch-disabled-track-opacity: 0.12;
+  --mdc-switch-disabled-unselected-icon-opacity: 0.38;
+  --mdc-switch-handle-shape: 9999px;
+  --mdc-switch-selected-icon-size: 16px;
+  --mdc-switch-track-height: 32px;
+  --mdc-switch-track-shape: 9999px;
+  --mdc-switch-track-width: 52px;
+  --mdc-switch-unselected-icon-size: 16px;
+  --mdc-switch-state-layer-size: 40px;
+  --mat-switch-track-outline-color: #757683;
+  --mat-switch-disabled-unselected-track-outline-color: #1a1b21;
+  --mat-switch-label-text-color: #1a1b21;
+  --mat-switch-label-text-font: var(--sys-body-medium-font);
+  --mat-switch-label-text-line-height: var(--sys-body-medium-line-height);
+  --mat-switch-label-text-size: var(--sys-body-medium-size);
+  --mat-switch-label-text-tracking: var(--sys-body-medium-tracking);
+  --mat-switch-label-text-weight: var(--sys-body-medium-weight);
+  --mat-switch-disabled-selected-handle-opacity: 1;
+  --mat-switch-disabled-unselected-handle-opacity: 0.38;
+  --mat-switch-unselected-handle-size: 16px;
+  --mat-switch-selected-handle-size: 24px;
+  --mat-switch-pressed-handle-size: 28px;
+  --mat-switch-with-icon-handle-size: 24px;
+  --mat-switch-selected-handle-horizontal-margin: 0 -7px;
+  --mat-switch-selected-with-icon-handle-horizontal-margin: 0 -7px;
+  --mat-switch-selected-pressed-handle-horizontal-margin: 0 -5px;
+  --mat-switch-unselected-handle-horizontal-margin: 0 8px;
+  --mat-switch-unselected-with-icon-handle-horizontal-margin: 0 4px;
+  --mat-switch-unselected-pressed-handle-horizontal-margin: 0 2px;
+  --mat-switch-visible-track-opacity: 1;
+  --mat-switch-hidden-track-opacity: 0;
+  --mat-switch-visible-track-transition: opacity 75ms;
+  --mat-switch-hidden-track-transition: opacity 75ms;
+  --mat-switch-track-outline-width: 2px;
+  --mat-switch-selected-track-outline-width: 2px;
+  --mat-switch-selected-track-outline-color: transparent;
+  --mat-switch-disabled-unselected-track-outline-width: 2px;
+}
+
+.mat-mdc-standard-chip {
+  --mdc-chip-elevated-container-color: #fff;
+  --mdc-chip-label-text-color: #000;
+  --mdc-chip-label-text-weight: 500;
+}
+
+:dir(ltr) .mat-mdc-standard-chip, html {
+  --mdc-chip-label-text-font: "Montserrat", sans-serif;
+  --mdc-snackbar-supporting-text-font: "Montserrat", sans-serif;
+}
+
+:dir(rtl) .mat-mdc-standard-chip, html {
+  --mdc-chip-label-text-font: "Readex Pro", serif;
+  --mdc-snackbar-supporting-text-font: "Readex Pro", serif;
+}
+
+
+/* Angular Material Menu */
+.mat-mdc-menu-panel {
+  background-color: #fff !important;
+  z-index: 99999 !important;
+}
+
+/* Menu items */
+.mat-mdc-menu-item {
+  background-color: #fff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover */
+// .mat-mdc-menu-item:hover {
+//   background-color: var(--primary) !important;
+//   color: #fff !important;
+// }
+
+/* Icon inside menu item */
+.mat-mdc-menu-item:hover .mat-icon {
+  color: #fff !important;
+}

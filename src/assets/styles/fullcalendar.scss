@@ -1,0 +1,24 @@
+:root {
+  --fc-button-bg-color: var(--light-primary);
+  --fc-button-border-color: var(--light-primary);
+  --fc-button-active-bg-color: var(--primary);
+  --fc-button-active-border-color: var(--primary);
+  --fc-button-text-color: var(--primary);
+  --fc-button-hover-bg-color: var(--white-color);
+  --fc-button-hover-border-color: var(--white-color);
+}
+
+.fc .fc-button-primary:hover:not(:disabled),
+.fc .fc-button-primary.fc-button-active {
+  --fc-button-text-color: #fff;
+}
+
+//.fc-daygrid-day {
+//  height: 80px;  /* Adjust this value to your preference */
+//}
+
+.fc-event {
+  background: transparent;
+  border: none;
+  outline: none;
+}

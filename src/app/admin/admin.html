@@ -1,0 +1,234 @@
+<div class="floors flex-column gap-y-2 h-100 p-5">
+<language></language>
+
+    <!-- ========================================= -->
+    <!-- TOP SECTION -->
+    <!-- ========================================= -->
+
+    <div class="top-section flex aic gap-x-2">
+
+
+        <!-- SEARCH -->
+
+        <div class="flex-auto">
+
+            <search searchPlaceHolder="search_by_house_unit" (valueChanged)="search($event)">
+            </search>
+
+        </div>
+
+
+        <!-- ADD -->
+
+        <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
+            (click)="addHouseUnit()">
+
+            <span>
+                {{ 'add_house_unit' | translate }}
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- TABLE -->
+    <!-- ========================================= -->
+
+    <div class="table-data bg-white relative height-without-tabs" magicScroll>
+
+
+        @if (!loading) {
+
+        <table class="table w-100 rounded bg-white">
+
+
+            <!-- ======================================= -->
+            <!-- HEADER -->
+            <!-- ======================================= -->
+
+            <thead>
+
+                <tr class="primary">
+
+                    <th class="text-left">
+                        ID
+                    </th>
+
+                    <th class="text-left">
+                        {{ 'floor' | translate }}
+                    </th>
+
+                    <th class="text-left">
+                        {{ 'house_unit' | translate }}
+                    </th>
+
+                    <th class="text-left">
+                        {{ 'user' | translate }}
+                    </th>
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <!-- ======================================= -->
+            <!-- BODY -->
+            <!-- ======================================= -->
+
+            <tbody>
+
+
+                @if (houseUnits.length > 0) {
+
+
+                <tr class="black rounded" *ngFor="
+                let houseUnit of houseUnits
+                  | paginate : {
+                      itemsPerPage: pageSize,
+                      currentPage: currentPage
+                    };
+
+                trackBy: trackBy
+              ">
+
+
+                    <!-- ID -->
+
+                    <td class="text-left px-2">
+
+                        <div class="flex aic mt-75">
+
+                            <img src="/icons/copy.svg" alt="copy" width="12" />
+
+                            <p class="muted fs-15 ml-50">
+
+                                {{ houseUnit.id }}
+
+                            </p>
+
+                        </div>
+
+                    </td>
+
+
+                    <!-- FLOOR -->
+
+                    <td class="text-left">
+
+                        {{ houseUnit.floorName }}
+
+                    </td>
+
+
+                    <!-- HOUSE UNIT -->
+
+                    <td class="text-left">
+
+                        {{ houseUnit.name }}
+
+                    </td>
+
+
+                    <!-- USER -->
+
+                    <td class="text-left">
+
+                        {{ houseUnit.userName || '---' }}
+
+                    </td>
+
+                    <td (click)="$event.stopImmediatePropagation()">
+
+                        <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
+                    </td>
+
+                    <mat-menu #menu="matMenu" class="filter-menu">
+                        <div dir="auto">
+
+                            <button mat-menu-item>
+                                <div class="flex aic">
+                                    <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
+                                    <p class="ml-1">{{ "edit_floor" | translate }}</p>
+                                </div>
+                            </button>
+                            <button mat-menu-item (click)="deleteAcademy()">
+                                <div class="flex aic">
+                                    <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
+                                    <p class="ml-1">{{ "delete_floor_map" | translate }}</p>
+                                </div>
+                            </button>
+                        </div>
+                    </mat-menu>
+                </tr>
+
+                }
+
+
+                <!-- ===================================== -->
+                <!-- NO DATA -->
+                <!-- ===================================== -->
+
+                @if (houseUnits.length === 0) {
+
+                <tr>
+
+                    <td colspan="4" class="text-center py-3">
+
+                        No Data Found
+
+                    </td>
+
+                </tr>
+
+                }
+
+
+            </tbody>
+
+        </table>
+
+        }
+
+
+        <!-- ========================================= -->
+        <!-- LOADING -->
+        <!-- ========================================= -->
+
+        @if (loading) {
+
+        <rectangle-skeleton class="w-100 h-100">
+        </rectangle-skeleton>
+
+        }
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- PAGINATION -->
+    <!-- ========================================= -->
+
+    @if (
+    houseUnits.length > pageSize &&
+    !loading
+    ) {
+
+    <div class="flex-center">
+
+        <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel="" nextLabel=""
+            (pageChange)="pageChanged($event)">
+
+        </pagination-controls>
+
+    </div>
+
+    }
+
+
+</div>

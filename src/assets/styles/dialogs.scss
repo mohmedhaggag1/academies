@@ -1,0 +1,69 @@
+.mdc-dialog__title {
+  padding: 5px 24px 5px !important;
+  line-height: 1.2 !important;
+  color: #323232 !important;
+  &::before {
+    height: 0 !important;
+  }
+}
+
+.mat-mdc-dialog-container .mdc-dialog__content {
+  color: unset !important;
+}
+
+.mdc-dialog .mdc-dialog__content {
+  padding: 20px 24px 4px 24px !important;
+}
+
+.mdc-dialog__actions {
+  padding: 10px 24px 10px !important;
+  @media (max-width: 500px) {
+    padding: 24px 0 25px !important;
+  }
+  @media (max-width: 500px) {
+    justify-content: center !important;
+  }
+}
+
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 8px !important;
+}
+
+.large-dialog {
+  width: min(80rem, 95%);
+}
+
+.double-large-dialog {
+  width: min(90rem, 95%);
+}
+
+.extra-large-dialog {
+  width: min(110rem, 95%);
+}
+
+.medium-dialog {
+  width: min(60rem, 95%);
+}
+
+.small-dialog {
+  width: min(40rem, 95%);
+}
+
+.assets-dialog {
+  width: min(150rem, 95%);
+}
+
+.close {
+  position: absolute;
+  inset-inline-end: 2rem;
+  top: 2rem;
+  z-index: 9;
+}
+
+.mat-mdc-dialog-content {
+  max-height: 80vh !important;
+}
