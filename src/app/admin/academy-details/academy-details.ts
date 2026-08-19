@@ -18,6 +18,7 @@ import { AlertService } from '../../core/services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { AccountStatusSelect } from "../../core/components/maintenance-status-select/maintenance-status-select.component";
 import { AccountStatus } from "../../core/components/account-status/account-status";
+import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
 
 
 @Component({
@@ -28,14 +29,15 @@ import { AccountStatus } from "../../core/components/account-status/account-stat
     FormsModule,
     TranslateModule,
     NgxPaginationModule,
-    SearchComponent,
+    // SearchComponent,
     RectangleSkeletonComponent,
     MagicScrollDirective,
     MatMenuModule,
     NotFoundComponent,
     PriorityComponent,
     // AccountStatusSelect,
-    AccountStatus
+    AccountStatus,
+    CountryReceiptFilterComponent
 ],
 
   templateUrl: './academy-details.html',

@@ -46,5 +46,7 @@
   "copy_failed": "فشل نسخ كود الأكاديمية",
   "academy_updated": "تم تحديث بيانات الأكاديمية بنجاح",
   "active": "نشط",
-  "inactive": "غير نشط"
+  "inactive": "غير نشط",
+  "countries_receipts" : "إيصالات الدول",
+  "currency" : "العملة"
 }

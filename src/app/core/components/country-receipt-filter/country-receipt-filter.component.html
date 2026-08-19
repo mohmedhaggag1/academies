@@ -1,0 +1,12 @@
+<div class="dashboard-select pointer">
+  <ng-select class="flex-grow select-with-icon pointer" appendTo="body" [multiple]="false" [clearable]="true"
+    [items]="[
+      { id: 1, name: 'Country 1' },
+      { id: 2, name: 'Country 2' },
+      { id: 3, name: 'Country 3' }
+    ]"
+    bindValue="id" [(ngModel)]="selectedValue" bindLabel="name"
+    (ngModelChange)="onChanged($event)" [placeholder]="'currency' | translate" [searchable]="true"
+    (search)="onBuildingSearch($event)" (clear)="onClear()" (close)="onClose()">
+  </ng-select>
+</div>
