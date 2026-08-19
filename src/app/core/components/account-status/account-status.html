@@ -1,0 +1,28 @@
+<button type="button" class="account-status-btn" [matMenuTriggerFor]="accountMenu" (click)="selectedAcademy = academy">
+
+    <span class="account-status" [ngClass]="{
+                  'green': academy.accountStatus == 'active' ,
+                  'danger': academy.accountStatus == 'inactive'      }">
+        {{ academy.accountStatus | translate}}
+    </span>
+
+    <i class="bx bx-chevron-down"></i>
+
+</button>
+
+<mat-menu #accountMenu="matMenu">
+
+    @for (status of accountStatuses; track status.id) {
+
+    <button mat-menu-item (click)="changeAccountStatus(selectedAcademy, status)">
+
+        <img [src]="status.src"  width="10" height="10" alt="" />
+        <span class="px-1">
+            {{ status.name | translate}}
+        </span>
+
+    </button>
+
+    }
+
+</mat-menu>

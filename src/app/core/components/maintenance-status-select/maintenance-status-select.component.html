@@ -1,0 +1,18 @@
+<div class="dashboard-select">
+  <ng-select
+    class="flex-grow select-with-icon"
+    appendTo="body"
+    [multiple]="false"
+    [clearable]="true"
+    bindValue="id"
+    [items]="[
+      { id: 1, name: 'paid' },
+      { id: 2, name: 'not paid' }
+    ]"
+    bindLabel="name"
+    [(ngModel)]="selectedValue"
+    [searchable]="false"
+    (ngModelChange)="onChanged()"
+    [placeholder]="'account_status' | translate">
+  </ng-select>
+</div>
