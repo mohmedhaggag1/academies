@@ -21,6 +21,8 @@
     "save": "حفظ",
     "cancel": "إلغاء",
     "receipt_number": "عدد الحوالات",
-    "academy_id_copied": "تم نسخ كود الأكاديمية بنجاح."
+    "academy_id_copied": "تم نسخ كود الأكاديمية بنجاح.",
+    "paied": "مدفوع",
+    "unpaied": "غير مدفوع"
 
 }

@@ -12,20 +12,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
 import { AlertService } from '../../core/services/alert.service';
 import { ActivatedRoute } from '@angular/router';
+import { PriorityComponent } from "../../core/components/priority.component";
 
 @Component({
   selector: 'academy-details',
   imports: [
     CommonModule,
-        TranslateModule,
-        NgxPaginationModule,
-        SearchComponent,
-        RectangleSkeletonComponent,
-        MagicScrollDirective,
-        MatMenuModule,
-        // LanguageComponent,
-        NotFoundComponent
-  ],
+    TranslateModule,
+    NgxPaginationModule,
+    SearchComponent,
+    RectangleSkeletonComponent,
+    MagicScrollDirective,
+    MatMenuModule,
+    // LanguageComponent,
+    NotFoundComponent,
+    PriorityComponent
+],
   templateUrl: './academy-details.html',
   styleUrl: './academy-details.scss',
 })
