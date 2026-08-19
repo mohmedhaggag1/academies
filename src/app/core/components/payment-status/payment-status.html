@@ -1,0 +1,31 @@
+<div class="dashboard-select pointer">
+  <ng-select
+    class="flex-grow select-with-icon pointer"
+    appendTo="body"
+    [multiple]="false"
+    [clearable]="true"
+    [items]="[
+      { id: 1, name: 'payment_done' },
+      { id: 3, name: 'payment_failed' }
+    ]"
+    bindValue="id"
+    [(ngModel)]="selectedValue"
+    (ngModelChange)="onChanged($event)"
+    [placeholder]="'payment_status' | translate"
+    [searchable]="true"
+    (search)="onBuildingSearch($event)"
+    (clear)="onClear()"
+    (close)="onClose()">
+
+    <!-- Selected value -->
+    <ng-template ng-label-tmp let-item="item">
+      {{ item.name | translate }}
+    </ng-template>
+
+    <!-- Dropdown options -->
+    <ng-template ng-option-tmp let-item="item">
+      {{ item.name | translate }}
+    </ng-template>
+
+  </ng-select>
+</div>

@@ -48,5 +48,8 @@
   "active": "نشط",
   "inactive": "غير نشط",
   "countries_receipts" : "إيصالات الدول",
-  "currency" : "العملة"
+  "currency" : "العملة",
+  "payment_status": "حالة الدفع",
+  "payment_done": "تم الدفع",
+  "payment_failed": "لم بتم الدفع"
 }

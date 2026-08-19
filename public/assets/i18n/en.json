@@ -50,5 +50,8 @@
   "active": "Active",
   "inactive": "Inactive",
   "countries_receipts": "Countries Receipts",
-  "currency" : "Currency"
+  "currency" : "Currency",
+  "payment_status": "Payment Status",
+  "payment_done": "Payment Done",
+  "payment_failed": "Payment Failed"
 }

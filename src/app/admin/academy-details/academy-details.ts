@@ -19,8 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountStatusSelect } from "../../core/components/maintenance-status-select/maintenance-status-select.component";
 import { AccountStatus } from "../../core/components/account-status/account-status";
 import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
-
-
+import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
 @Component({
   selector: 'academy-details',
 
@@ -37,7 +36,8 @@ import { CountryReceiptFilterComponent } from "../../core/components/country-rec
     PriorityComponent,
     // AccountStatusSelect,
     AccountStatus,
-    CountryReceiptFilterComponent
+    CountryReceiptFilterComponent,
+    PaymentStatusComponent,
 ],
 
   templateUrl: './academy-details.html',
