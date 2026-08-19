@@ -19,5 +19,7 @@
   "academy_name": "Academy Name",
   "phone_number": "Phone Number",
   "save": "Save",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "receipt_number" : "Receipt Number",
+  "academy_id_copied" : "Academy ID has been copied successfully."
 }

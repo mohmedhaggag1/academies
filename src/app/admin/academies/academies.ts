@@ -10,6 +10,7 @@ import { MagicScrollDirective } from '../../core/directives/magic-scroll.directi
 import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
+import { AlertService } from '../../core/services/alert.service';
 
 
 
@@ -33,7 +34,7 @@ export class Academies { loading = false;
   currentPage = 1;
   pageSize = 15;
   maxSize = 7;
-
+  alert = inject(AlertService);
   allHouseUnits = [
 
     {
@@ -274,6 +275,12 @@ export class Academies { loading = false;
     this.currentPage = page;
   }
 
+  copyToClipboard(text: any) {
+
+    navigator.clipboard.writeText(text);
+    this.alert.showAlert('academy_id_copied', 'bg-success');
+    
+  }
 
   trackBy(
     index: number,

@@ -32,6 +32,10 @@
                         {{ 'mobile_number' | translate }}
                     </th>
 
+                    <th class="text-center">
+                        {{ 'receipt_number' | translate }}
+                    </th>
+
                     <th></th>
 
                 </tr>
@@ -52,20 +56,18 @@
               ">
 
                     <td class="text-left px-2">
-
                         <div class="flex aic mt-75">
 
-                            <img src="/icons/copy.svg" alt="copy" width="12" />
+                            <img src="/icons/copy.svg" alt="copy" width="12" class="clickable pointer"
+                                (click)="copyToClipboard(houseUnit.id)" />
 
                             <p class="muted fs-15 ml-50">
-
                                 {{ houseUnit.id }}
-
                             </p>
 
                         </div>
-
                     </td>
+
 
 
                     <!-- FLOOR -->
@@ -82,6 +84,12 @@
 
                     </td>
 
+                    <td class="text-center">
+
+                        {{ 252 }}
+
+                    </td>
+
                     <td (click)="$event.stopImmediatePropagation()">
 
                         <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
@@ -90,7 +98,7 @@
                     <mat-menu #menu="matMenu" class="filter-menu">
                         <div dir="auto">
 
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="academyIdForm(houseUnit)">
                                 <div class="flex aic">
                                     <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
                                     <p class="ml-1">{{ "edit_academy" | translate }}</p>
@@ -129,7 +137,7 @@
     </div>
 
     @if (
-    houseUnits.length > pageSize &&  !loading
+    houseUnits.length > pageSize && !loading
     ) {
 
     <div class="flex-center">

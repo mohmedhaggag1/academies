@@ -19,6 +19,8 @@
     "academy_name": "اسم الأكاديمية",
     "phone_number": "رقم الهاتف",
     "save": "حفظ",
-    "cancel": "إلغاء"
+    "cancel": "إلغاء",
+    "receipt_number": "عدد الحوالات",
+    "academy_id_copied": "تم نسخ كود الأكاديمية بنجاح."
 
 }
