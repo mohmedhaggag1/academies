@@ -263,3 +263,12 @@ li.current {
 .input, .ng2-flatpickr-input.form-control {
     padding: 0.5rem 1.1rem !important;
 }
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.mat-datepicker-content .mat-calendar  {
+  background-color: #e5e5e5 !important;
+  border-radius: 0.5rem !important;
+}

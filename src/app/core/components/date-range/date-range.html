@@ -1,0 +1,75 @@
+<!-- <div
+  class="dashboard-select date-range-select"
+  (click)="picker.open()">
+
+  <div class="date-range-content">
+
+    <span class="date-range-value">
+      {{ getDateRangeLabel() }}
+    </span>
+
+    <i class="bx bx-calendar date-range-icon"></i>
+
+  </div>
+
+  <mat-date-range-input
+    class="hidden-date-input"
+    [rangePicker]="picker">
+
+    <input
+      matStartDate
+      [(ngModel)]="startDate"
+      (dateChange)="onDateChange()"
+    />
+
+    <input
+      matEndDate
+      [(ngModel)]="endDate"
+      (dateChange)="onDateChange()"
+    />
+
+  </mat-date-range-input>
+
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+</div> -->
+
+
+<div
+  class="dashboard-select date-range-select"
+  (click)="openPicker(picker)">
+
+  <div class="date-range-content">
+
+    <span class="date-range-value">
+      {{ getDateRangeLabel() }}
+    </span>
+
+    <i class="bx bx-calendar date-range-icon"></i>
+
+  </div>
+
+  <mat-date-range-input
+    class="hidden-date-input"
+    [rangePicker]="picker">
+
+    <input
+      matStartDate
+      [(ngModel)]="startDate"
+      (dateChange)="onDateChange()"
+    />
+
+    <input
+      matEndDate
+      [(ngModel)]="endDate"
+      (dateChange)="onDateChange()"
+    />
+
+  </mat-date-range-input>
+
+  <mat-date-range-picker
+    #picker
+    [startAt]="startDate || endDate || today">
+  </mat-date-range-picker>
+
+</div>

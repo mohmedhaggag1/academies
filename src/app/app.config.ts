@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { routes } from './app.routes';
 
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -34,11 +35,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
 
     provideHttpClient(),
-
+    provideNativeDateAdapter(),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
+          
           useFactory: createTranslateLoader,
           deps: [HttpClient]
         },

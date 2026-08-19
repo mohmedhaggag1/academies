@@ -34,7 +34,7 @@
 
             <span>
                 {{ 'add_academy' | translate }} 
-            </span>
+            </span> 
 
         </button> -->
         <div class="col-lg-3">
@@ -47,6 +47,10 @@
 
          <div class="col-lg-3">
             <bank-account-status-filter />
+        </div>
+
+        <div class="col-lg-3">
+            <date-range-filter (dateRangeChange)="onDateRangeChange($event)"></date-range-filter>
         </div>
 
     </div>

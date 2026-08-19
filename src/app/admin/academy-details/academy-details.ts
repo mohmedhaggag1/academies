@@ -21,6 +21,7 @@ import { AccountStatus } from "../../core/components/account-status/account-stat
 import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
 import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
 import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
+import { DateRange } from "../../core/components/date-range/date-range";
 @Component({
   selector: 'academy-details',
 
@@ -39,7 +40,8 @@ import { BankAccountStatusFilter } from "../../core/components/bank-account-stat
     AccountStatus,
     CountryReceiptFilterComponent,
     PaymentStatusComponent,
-    BankAccountStatusFilter
+    BankAccountStatusFilter,
+    DateRange
 ],
 
   templateUrl: './academy-details.html',
@@ -612,6 +614,7 @@ export class AcademyDetails {
       return;
     }
 
+    
 
     // Filter
 
@@ -789,7 +792,13 @@ export class AcademyDetails {
 
   }
 
-
+ onDateRangeChange(event: {
+    startDate: Date | null;
+    endDate: Date | null;
+  }) {
+    console.log('Start:', event.startDate);
+    console.log('End:', event.endDate);
+  }
   // ==============================
   // Cancel Edit
   // ==============================

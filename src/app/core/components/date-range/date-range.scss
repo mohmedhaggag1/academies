@@ -1,0 +1,47 @@
+.date-range-select {
+  position: relative;
+  width: 100%;
+  min-width: 240px;
+  cursor: pointer;
+}
+
+.date-range-content {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  padding: 0 8px;
+
+  transition: border-color 0.2s ease;
+}
+
+.date-range-content:hover {
+  border-bottom-color: #002579;
+}
+
+.date-range-value {
+  flex: 1;
+  color: #555;
+  font-size: 14px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.date-range-icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: #002579;
+}
+
+.hidden-date-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
