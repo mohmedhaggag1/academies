@@ -30,7 +30,6 @@ export class AccountStatus {
        src : "/icons/hight.svg",
     }
   ];
-  // <img src="/icons/medium.svg" *ngIf="priorityId == 3" width="10" height="10" alt="" />
   
   ngOnOnit() {
     this.selectedAcademy = this.academy
