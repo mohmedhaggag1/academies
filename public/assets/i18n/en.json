@@ -23,5 +23,37 @@
   "receipt_number" : "Receipt Number",
   "academy_id_copied" : "Academy ID has been copied successfully.",
   "paied" :"Paied",
-  "unpaied" : "Unpaied"
+  "unpaied" : "Unpaied",
+
+  "back": "Back",
+  "transfer_status": "Transfer Status",
+  "account": "Account",
+  "account_status": "Account Status",
+  "transfer_receipt": "Transfer Receipt",
+  "payment_method": "Payment Method",
+  "exchange_rate": "Exchange Rate",
+  "total_egp": "Total (EGP)",
+  "date": "Date",
+  "invoice": "Invoice",
+  "view_invoice": "View Invoice",
+
+  "delete": "Delete",
+  "edit": "Edit",
+
+  "paid": "Paid",
+  "not_paid": "Not Paid",
+  "pending": "Pending",
+
+  "accounted": "Accounted",
+  "not_accounted": "Not Accounted",
+
+  "transfer": "Transfer",
+  "cash": "Cash",
+  "card": "Card",
+
+  "copy_failed": "Failed to copy Academy ID",
+
+  "academy_updated": "Academy updated successfully",
+  "active": "Active",
+  "inactive": "Inactive"
 }

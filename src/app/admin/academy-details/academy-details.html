@@ -1,50 +1,95 @@
 <div class="floors flex-column gap-y-2 h-100 p-5">
-   <div class="flex aic jcsb gap-x-2">
-     <div class=" flex aic pointer" routerLink="../../">
-        <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }">
-        </i>
-        <span>
-            {{ 'back' | translate }}
-        </span>
+
+    <!-- Header -->
+    <div class="flex aic jcsb gap-x-2">
+
+        <div class="flex aic pointer" routerLink="../../">
+
+            <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }">
+            </i>
+
+            <span>
+                {{ 'back' | translate }}
+            </span>
+
+        </div>
+
+        <h3 class="m-0">
+            #{{ academyId }}
+        </h3>
+
     </div>
 
-    <h3 class="m-0">
-        #{{ academyId }}
-    </h3>
-   </div>
 
+    <!-- Search + Add -->
     <div class="top-section flex aic gap-x-2">
+
         <div class="flex-auto">
-            <search searchPlaceHolder="search" (valueChanged)="search($event)"></search>
+            <search searchPlaceHolder="search" (valueChanged)="search($event)">
+            </search>
         </div>
-        <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1">
+
+        <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
+            (click)="addAcademy()">
+
             <span>
                 {{ 'add_academy' | translate }}
             </span>
+
         </button>
+
     </div>
 
 
+    <!-- Table -->
     <div class="table-data bg-white relative height-with-tabs" magicScroll>
+
         @if (!loading) {
+
         <table class="table w-100 rounded bg-white">
+
             <thead>
+
                 <tr class="primary">
 
-                    <th class="text-left">
-                        {{'id' | translate}}
-                    </th>
-
-                    <th class="text-left">
-                        {{ 'academic_name' | translate }}
-                    </th>
-
-                    <th class="text-left">
-                        {{ 'mobile_number' | translate }}
-                    </th>
-
+                    <!-- Status -->
                     <th class="text-center">
-                        {{ 'receipt_number' | translate }}
+                        {{ 'transfer_status' | translate }}
+                    </th>
+
+                    <!-- Account -->
+                    <th class="text-center">
+                        {{ 'account' | translate }}
+                    </th>
+
+                    <!-- Receipt -->
+                    <th class="text-center">
+                        {{ 'transfer_receipt' | translate }}
+                    </th>
+
+                    <!-- Payment Method -->
+                    <th class="text-center">
+                        {{ 'payment_method' | translate }}
+                    </th>
+
+                    <!-- Exchange Rate -->
+                    <th class="text-center">
+                        {{ 'exchange_rate' | translate }}
+                    </th>
+
+                    <!-- Total -->
+                    <th class="text-center">
+                        {{ 'total_egp' | translate }}
+                    </th>
+
+                    <!-- Date -->
+                    <th class="text-center">
+                        {{ 'date' | translate }}
+                    </th>
+
+                    <!-- Invoice -->
+                    <th class="text-center">
+                        {{ 'invoice' | translate }}
                     </th>
 
                     <th></th>
@@ -53,98 +98,403 @@
 
             </thead>
 
+
             <tbody>
 
                 @if (houseUnits.length > 0) {
+
                 <tr class="black rounded" *ngFor="
-                let houseUnit of houseUnits
-                  | paginate : {
-                      itemsPerPage: pageSize,
-                      currentPage: currentPage
-                    };
+                        let academy of houseUnits
+                        | paginate : {
+                            itemsPerPage: pageSize,
+                            currentPage: currentPage
+                        };
+                        trackBy: trackBy
+                    ">
 
-                trackBy: trackBy
-              ">
+                    <!-- CODE -->
+                    <!-- <td class="text-left px-2">
 
-                    <td class="text-left px-2">
                         <div class="flex aic mt-75">
 
-                            <img src="/icons/copy.svg" alt="copy" width="12" class="clickable pointer"
-                                (click)="copyToClipboard(houseUnit.id)" />
+                            <img
+                                src="/icons/copy.svg"
+                                alt="copy"
+                                width="12"
+                                class="clickable pointer"
+                                (click)="copyToClipboard(academy.code); $event.stopPropagation()"
+                            />
+
+                            @if (editingId !== academy.id) {
 
                             <p class="muted fs-15 ml-50">
-                                {{ houseUnit.id }}
+                                {{ academy.code }}
                             </p>
 
+                            } @else {
+
+                            <input
+                                type="text"
+                                class="form-control ml-50"
+                                [(ngModel)]="academy.code"
+                            />
+
+                            }
+
                         </div>
-                    </td>
+
+                    </td> -->
 
 
+                    <!-- ACADEMY NAME -->
+                    <!-- <td class="px-1 text-left">
 
-                   <td class="px-1 text-left">
-                            <span class="px-1">
-                                <priority [priorityId]="3" [priorityName]="'paied'" />
-                            </span>
-                        </td>
+                        @if (editingId !== academy.id) {
 
-                    <td class="text-left">
+                        <span class="px-1">
+                            {{ academy.name }}
+                        </span>
 
-                        {{ houseUnit.name }}
+                        } @else {
 
-                    </td>
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="academy.name"
+                        />
 
+                        }
+
+                    </td> -->
+
+
+                    <!-- STATUS -->
                     <td class="text-center">
 
-                        {{ 252 }}
+                        @if (editingId !== academy.id) {
+
+                        <priority [priorityId]="academy.statusId" [priorityName]="academy.status" />
+
+                        } @else {
+
+                        <select class="form-control" [(ngModel)]="academy.status">
+
+                            <option value="Paid">
+                                Paid
+                            </option>
+
+                            <option value="Not Paid">
+                                Not Paid
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                        </select>
+
+                        }
 
                     </td>
 
-                    <td (click)="$event.stopImmediatePropagation()">
 
-                        <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
+                    <!-- ACCOUNT -->
+                    <!-- <td class="text-center"> -->
+                    <!-- 
+                        @if (editingId !== academy.id) { -->
+
+                    <!-- <span>
+                            {{ academy.accountStatus }}
+                        </span> -->
+
+                    <!-- } @else { -->
+
+                    <!-- <select
+                            class="form-control"
+                            [(ngModel)]="academy.accountStatus">
+
+                            <option value="Accounted">
+                                Accounted
+                            </option>
+
+                            <option value="Not Accounted">
+                                Not Accounted
+                            </option>
+
+                        </select> -->
+
+                    <!-- <account-status-select
+                            [(ngModel)]="academy.accountStatus"
+                            [selectedValue]="1"
+                            (filterValue)="onAccountStatusChanged($event, academy)">
+                        </account-status-select> -->
+
+                    <!-- } -->
+
+
+
+                    <!-- </td> -->
+
+                    <td class="text-center" (click)="$event.stopPropagation()">
+                        <app-account-status [academy]="academy"></app-account-status>
+
+
+                        
+                        <!-- <button type="button" class="account-status-btn" [matMenuTriggerFor]="accountMenu"
+                            (click)="selectedAcademy = academy">
+
+                            <span>
+                                {{ academy.accountStatus | translate}}
+                            </span>
+
+                            <i class="bx bx-chevron-down"></i>
+
+                        </button> -->
+<!-- 
+                        <mat-menu #accountMenu="matMenu">
+
+                            @for (status of accountStatuses; track status.id) {
+
+                            <button mat-menu-item (click)="changeAccountStatus(selectedAcademy, status)">
+
+                                {{ status.name | translate}}
+
+                            </button>
+
+                            }
+
+                        </mat-menu> -->
                     </td>
 
-                    <mat-menu #menu="matMenu" class="filter-menu">
-                        <div dir="auto">
 
-                            <button mat-menu-item>
-                                <div class="flex aic">
-                                    <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
-                                    <p class="ml-1">{{ "edit_academy" | translate }}</p>
-                                </div>
+                    <!-- TRANSFER RECEIPT -->
+                    <td class="text-center">
+
+                        @if (editingId !== academy.id) {
+
+                        <span>
+                            {{ academy.receiptNumber }}
+                        </span>
+
+                        } @else {
+
+                        <input type="text" class="form-control" [(ngModel)]="academy.receiptNumber" />
+
+                        }
+
+                    </td>
+
+
+                    <!-- PAYMENT METHOD -->
+                    <td class="text-center">
+
+                        @if (editingId !== academy.id) {
+
+                        <span>
+                            {{ academy.paymentMethod }}
+                        </span>
+
+                        } @else {
+
+                        <select class="form-control" [(ngModel)]="academy.paymentMethod">
+
+                            <option value="Transfer">
+                                Transfer
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="Card">
+                                Card
+                            </option>
+
+                        </select>
+
+                        }
+
+                    </td>
+
+
+                    <!-- EXCHANGE RATE -->
+                    <td class="text-center">
+
+                        @if (editingId !== academy.id) {
+
+                        <span>
+                            {{ academy.exchangeRate }}
+                        </span>
+
+                        } @else {
+
+                        <input type="number" class="form-control" [(ngModel)]="academy.exchangeRate" />
+
+                        }
+
+                    </td>
+
+
+                    <!-- TOTAL EGP -->
+                    <td class="text-center">
+
+                        @if (editingId !== academy.id) {
+
+                        <span class="fw-bold">
+                            EGP {{ academy.totalEgp | number:'1.2-2' }}
+                        </span>
+
+                        } @else {
+
+                        <input type="number" class="form-control" [(ngModel)]="academy.totalEgp" />
+
+                        }
+
+                    </td>
+
+
+                    <!-- DATE -->
+                    <td class="text-center">
+
+                        @if (editingId !== academy.id) {
+
+                        <span>
+                            {{ academy.date | date:'yyyy-MM-dd' }}
+                        </span>
+
+                        } @else {
+
+                        <input type="date" class="form-control" [(ngModel)]="academy.date" />
+
+                        }
+
+                    </td>
+
+
+                    <!-- INVOICE -->
+                    <td class="text-center">
+
+                        @if (academy.invoiceUrl) {
+
+                        <a [href]="academy.invoiceUrl" target="_blank" class="clickable">
+
+                            {{ 'view_invoice' | translate }}
+
+                        </a>
+
+                        } @else {
+
+                        <span class="muted">
+                            -
+                        </span>
+
+                        }
+
+                    </td>
+
+
+                    <!-- ACTIONS -->
+                    <td class="text-center" (click)="$event.stopPropagation()">
+
+                        @if (editingId !== academy.id) {
+
+                        <img src="/icons/menu.svg" class="pointer px-1" [matMenuTriggerFor]="menu" alt="menu icon" />
+
+                        <mat-menu #menu="matMenu" class="filter-menu">
+
+                            <div dir="auto">
+
+                                <button mat-menu-item (click)="editAcademy(academy)">
+
+                                    <div class="flex aic">
+
+                                        <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
+
+                                        <p class="ml-1">
+                                            {{ "edit_academy" | translate }}
+                                        </p>
+
+                                    </div>
+
+                                </button>
+
+
+                                <button mat-menu-item (click)="deleteAcademy(academy)">
+
+                                    <div class="flex aic">
+
+                                        <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
+
+                                        <p class="ml-1">
+                                            {{ "delete_academy" | translate }}
+                                        </p>
+
+                                    </div>
+
+                                </button>
+
+                            </div>
+
+                        </mat-menu>
+
+                        } @else {
+
+                        <div class="flex aic gap-x-1">
+
+                            <button type="button" class="clickable-btn bg-primary px-2 rounded"
+                                (click)="saveAcademy(academy)">
+
+                                {{ 'save' | translate }}
+
                             </button>
 
-                            <button mat-menu-item>
-                                <div class="flex aic">
-                                    <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
-                                    <p class="ml-1">{{ "delete_academy" | translate }}</p>
-                                </div>
+                            <button type="button" class="clickable-btn px-2 rounded" (click)="cancelEdit(academy)">
+
+                                {{ 'cancel' | translate }}
+
                             </button>
+
                         </div>
-                    </mat-menu>
+
+                        }
+
+                    </td>
+
                 </tr>
 
                 }
 
                 @if (houseUnits.length === 0) {
+
                 <tr>
-                    <td colspan="4" class="text-center py-3">
+
+                    <td colspan="11" class="text-center py-3">
+
                         <not-found />
+
                     </td>
+
                 </tr>
+
                 }
+
             </tbody>
 
         </table>
 
         }
 
+
         @if (loading) {
+
         <rectangle-skeleton class="w-100 h-100" />
+
         }
 
     </div>
 
+
+    <!-- Pagination -->
     @if (
     houseUnits.length > pageSize && !loading
     ) {
@@ -153,10 +503,10 @@
 
         <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel="" nextLabel=""
             (pageChange)="pageChanged($event)">
-
         </pagination-controls>
 
     </div>
 
     }
+
 </div>
