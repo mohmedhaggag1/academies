@@ -6,13 +6,24 @@
     [clearable]="true"
     bindValue="id"
     [items]="[
-      { id: 1, name: 'paid' },
-      { id: 2, name: 'not paid' }
+      { id: 1, name: 'active' },
+      { id: 3, name: 'inactive' }
     ]"
     bindLabel="name"
     [(ngModel)]="selectedValue"
     [searchable]="false"
     (ngModelChange)="onChanged()"
-    [placeholder]="'account_status' | translate">
+    [placeholder]="'bank_account_status' | translate">
   </ng-select>
 </div>
+
+
+<!-- <div class="dashboard-select">
+    <ng-select class="flex-grow select-with-icon" appendTo="body" [multiple]="false" [clearable]="true" bindValue="id"
+        [items]="[{ id: 1, name: 'paid' }, { id: 2, name: 'not paid' }]"
+        bindLabel="name"
+        [(ngModel)]="selectedValue" 
+        [searchable]="false"
+        (ngModelChange)="onChanged()" [placeholder]="'account_status' | translate">
+    </ng-select>
+</div> -->

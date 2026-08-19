@@ -51,5 +51,8 @@
   "currency" : "العملة",
   "payment_status": "حالة الدفع",
   "payment_done": "تم الدفع",
-  "payment_failed": "لم بتم الدفع"
+  "payment_failed": "لم بتم الدفع",
+  "banf_account": "الحساب البنكي",
+  "iban": "رقم الحساب الدولي",
+  "bank_account_status": "حالة الحساب البنكي"
 }

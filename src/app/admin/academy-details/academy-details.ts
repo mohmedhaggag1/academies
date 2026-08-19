@@ -20,6 +20,7 @@ import { AccountStatusSelect } from "../../core/components/maintenance-status-se
 import { AccountStatus } from "../../core/components/account-status/account-status";
 import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
 import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
+import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
 @Component({
   selector: 'academy-details',
 
@@ -38,6 +39,7 @@ import { PaymentStatusComponent } from "../../core/components/payment-status/pay
     AccountStatus,
     CountryReceiptFilterComponent,
     PaymentStatusComponent,
+    BankAccountStatusFilter
 ],
 
   templateUrl: './academy-details.html',

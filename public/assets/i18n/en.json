@@ -53,5 +53,6 @@
   "currency" : "Currency",
   "payment_status": "Payment Status",
   "payment_done": "Payment Done",
-  "payment_failed": "Payment Failed"
+  "payment_failed": "Payment Failed",
+  "bank_account_status": "Bank Account Status"
 }
