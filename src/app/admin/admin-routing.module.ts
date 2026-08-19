@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Admin } from './admin';
-import { Academies } from './academies/academies';
 
 const routes: Routes = [
   {
     path: '',
     component: Admin,
     children: [
-      { path: 'academies', component: Academies },
+      { path: 'academies', loadComponent: () => import('./academies/academies').then(m => m.Academies)  },
+      {path: 'academies/:id', loadComponent: () => import('./academy-details/academy-details').then(m => m.AcademyDetails) },
       { path: '', redirectTo: 'academies', pathMatch: 'full' },
     ],
   },

@@ -11,8 +11,7 @@ import { ConfirmationMessageComponent } from '../../core/components/confirmation
 import { MatDialog } from '@angular/material/dialog';
 import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
 import { AlertService } from '../../core/services/alert.service';
-
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-academies',
@@ -25,7 +24,8 @@ import { AlertService } from '../../core/services/alert.service';
         MagicScrollDirective,
         MatMenuModule,
         // LanguageComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        RouterModule
   ],
   templateUrl: './academies.html',
   styleUrl: './academies.scss',

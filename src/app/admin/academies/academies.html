@@ -45,15 +45,16 @@
             <tbody>
 
                 @if (houseUnits.length > 0) {
-                <tr class="black rounded" *ngFor="
+                <tr class="black roundedcpointerc pointer" 
+                [routerLink]="['/admin/academies/', houseUnit.id]"
+                *ngFor="
                 let houseUnit of houseUnits
                   | paginate : {
                       itemsPerPage: pageSize,
                       currentPage: currentPage
                     };
-
                 trackBy: trackBy
-              ">
+              " >
 
                     <td class="text-left px-2">
                         <div class="flex aic mt-75">
