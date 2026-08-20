@@ -4,31 +4,37 @@ import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-account-status',
+  selector: 'transfer-status',
   imports: [
     TranslateModule,
     MatMenuModule,
     CommonModule
 ],
-  templateUrl: './account-status.html',
-  styleUrl: './account-status.scss',
+  templateUrl: './transfer-status.html',
+  styleUrl: './transfer-status.scss',
 })
-export class AccountStatus {
+export class TransferStatus {
 
-  @Input() academy: any = 'active';
+  @Input() academy: any = 'completed';
   selectedAcademy: any;
 
   accountStatuses = [
-    {
-      id: 2,
-      name: 'active',
-      src : "/icons/low.svg",
+     {
+      id: 1,
+      name: 'completed',
+       src : "/icons/hight.svg",
     },
     {
-      id: 1,
-      name: 'inactive',
+      id: 2,
+      name: 'pending',
+      src : "/icons/medium.svg",
+    },
+    {
+      id: 3,
+      name: 'not_arrived',
        src : "/icons/hight.svg",
-    }
+    },
+    
   ];
   
   ngOnOnit() {
@@ -36,7 +42,7 @@ export class AccountStatus {
   }
 
   changeAccountStatus(academy: any, status: any): void {
-    academy.accountStatus = status.name;
+    academy.statusId = status.name;
   }
 
 

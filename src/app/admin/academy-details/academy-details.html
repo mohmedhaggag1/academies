@@ -28,14 +28,6 @@
             </search>
         </div> -->
 
-        <!-- <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
-            (click)="addAcademy()">
-
-            <span>
-                {{ 'add_academy' | translate }} 
-            </span> 
-
-        </button> -->
         <div class="col-lg-2">
             <country-receipt-filter />
         </div>
@@ -103,7 +95,7 @@
 
                     <!-- Invoice -->
                     <th class="text-center">
-                        {{ 'invoice' | translate }}
+                        {{ 'transfer_img' | translate }}
                     </th>
 
                     <th></th>
@@ -126,158 +118,14 @@
                         trackBy: trackBy
                     ">
 
-                    <!-- CODE -->
-                    <!-- <td class="text-left px-2">
-
-                        <div class="flex aic mt-75">
-
-                            <img
-                                src="/icons/copy.svg"
-                                alt="copy"
-                                width="12"
-                                class="clickable pointer"
-                                (click)="copyToClipboard(academy.code); $event.stopPropagation()"
-                            />
-
-                            @if (editingId !== academy.id) {
-
-                            <p class="muted fs-15 ml-50">
-                                {{ academy.code }}
-                            </p>
-
-                            } @else {
-
-                            <input
-                                type="text"
-                                class="form-control ml-50"
-                                [(ngModel)]="academy.code"
-                            />
-
-                            }
-
-                        </div>
-
-                    </td> -->
-
-
-                    <!-- ACADEMY NAME -->
-                    <!-- <td class="px-1 text-left">
-
-                        @if (editingId !== academy.id) {
-
-                        <span class="px-1">
-                            {{ academy.name }}
-                        </span>
-
-                        } @else {
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            [(ngModel)]="academy.name"
-                        />
-
-                        }
-
-                    </td> -->
-
-
                     <!-- STATUS -->
-                    <td class="text-center">
-
-                        @if (editingId !== academy.id) {
-
-                        <priority [priorityId]="academy.statusId" [priorityName]="academy.status" />
-
-                        } @else {
-
-                        <select class="form-control" [(ngModel)]="academy.status">
-
-                            <option value="Paid">
-                                Paid
-                            </option>
-
-                            <option value="Not Paid">
-                                Not Paid
-                            </option>
-
-                            <option value="Pending">
-                                Pending
-                            </option>
-
-                        </select>
-
-                        }
-
+                   <td class="text-center" (click)="$event.stopPropagation()">
+                        <!-- <priority [priorityId]="academy.statusId" [priorityName]="academy.status" /> -->
+                         <transfer-status [academy]="academy"/>
                     </td>
 
-
-                    <!-- ACCOUNT -->
-                    <!-- <td class="text-center"> -->
-                    <!-- 
-                        @if (editingId !== academy.id) { -->
-
-                    <!-- <span>
-                            {{ academy.accountStatus }}
-                        </span> -->
-
-                    <!-- } @else { -->
-
-                    <!-- <select
-                            class="form-control"
-                            [(ngModel)]="academy.accountStatus">
-
-                            <option value="Accounted">
-                                Accounted
-                            </option>
-
-                            <option value="Not Accounted">
-                                Not Accounted
-                            </option>
-
-                        </select> -->
-
-                    <!-- <account-status-select
-                            [(ngModel)]="academy.accountStatus"
-                            [selectedValue]="1"
-                            (filterValue)="onAccountStatusChanged($event, academy)">
-                        </account-status-select> -->
-
-                    <!-- } -->
-
-
-
-                    <!-- </td> -->
-
                     <td class="text-center" (click)="$event.stopPropagation()">
-                        <app-account-status [academy]="academy"></app-account-status>
-
-
-                        
-                        <!-- <button type="button" class="account-status-btn" [matMenuTriggerFor]="accountMenu"
-                            (click)="selectedAcademy = academy">
-
-                            <span>
-                                {{ academy.accountStatus | translate}}
-                            </span>
-
-                            <i class="bx bx-chevron-down"></i>
-
-                        </button> -->
-<!-- 
-                        <mat-menu #accountMenu="matMenu">
-
-                            @for (status of accountStatuses; track status.id) {
-
-                            <button mat-menu-item (click)="changeAccountStatus(selectedAcademy, status)">
-
-                                {{ status.name | translate}}
-
-                            </button>
-
-                            }
-
-                        </mat-menu> -->
+                        <app-account-status [academy]="academy" />
                     </td>
 
 

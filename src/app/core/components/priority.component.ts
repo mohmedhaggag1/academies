@@ -6,14 +6,10 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'priority',
   imports: [CommonModule, TranslateModule],
   template: `
-    <div class="flex aic" dir="auto">
-      <img src="/icons/hight.svg" *ngIf="priorityId == 1" width="10" height="10" alt="" />
-      <img src="/icons/low.svg" *ngIf="priorityId == 2" width="10" height="10" alt="" />
-      <img src="/icons/medium.svg" *ngIf="priorityId == 3" width="10" height="10" alt="" />
-      @if(priorityName != '') {
-    <p class="ml-50" [ngStyle]="{ color: getPriorityColor(priorityId) }">
+    <div >
+      <p [ngStyle]="{ color: getPriorityColor(priorityId) }">
     {{ priorityName | translate }}
-  </p>      }
+   </p>
     </div>
   `,
   styles: ``

@@ -26,6 +26,7 @@
   "unpaied": "غير مدفوع",
   "back": "رجوع",
   "transfer_status": "حالة الحوالة",
+  "transfer_img": "صورة الحوالة",
   "account": "الحساب",
   "account_status": "حالة الحساب",
   "transfer_receipt": "إيصال التحويل",
@@ -54,5 +55,8 @@
   "payment_failed": "لم بتم الدفع",
   "banf_account": "الحساب البنكي",
   "iban": "رقم الحساب الدولي",
-  "bank_account_status": "حالة الحساب البنكي"
+  "bank_account_status": "حالة الحساب البنكي",
+  "chang_password" : "تغيير كلمة المرور",
+  "completed" : "تأكيد",
+  "not_arrived": "لم تصل"
 }

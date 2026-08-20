@@ -22,6 +22,8 @@ import { CountryReceiptFilterComponent } from "../../core/components/country-rec
 import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
 import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
 import { DateRange } from "../../core/components/date-range/date-range";
+import {TransferStatus} from "../../core/components/transfer-status/transfer-status"
+
 @Component({
   selector: 'academy-details',
 
@@ -35,14 +37,15 @@ import { DateRange } from "../../core/components/date-range/date-range";
     MagicScrollDirective,
     MatMenuModule,
     NotFoundComponent,
-    PriorityComponent,
+    // PriorityComponent,
     // AccountStatusSelect,
     AccountStatus,
     CountryReceiptFilterComponent,
     PaymentStatusComponent,
     BankAccountStatusFilter,
     DateRange,
-    RouterModule
+    RouterModule,
+    TransferStatus
 ],
 
   templateUrl: './academy-details.html',

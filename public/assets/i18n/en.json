@@ -26,6 +26,7 @@
   "unpaied" : "Unpaied",
   "back": "Back",
   "transfer_status": "Transfer Status",
+  "transfer_img": "transfer Image",
   "account": "Account",
   "account_status": "Account Status",
   "transfer_receipt": "Transfer Receipt",
@@ -54,5 +55,8 @@
   "payment_status": "Payment Status",
   "payment_done": "Payment Done",
   "payment_failed": "Payment Failed",
-  "bank_account_status": "Bank Account Status"
+  "bank_account_status": "Bank Account Status",
+  "chang_password" : "Change Password",
+  "completed": "Completed",
+  "not_arrived": "Not Arrived"
 }

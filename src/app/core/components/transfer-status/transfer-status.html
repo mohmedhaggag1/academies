@@ -4,7 +4,7 @@
       <img src="/icons/low.svg" *ngIf="academy.accountStatus == 'inactive'" width="10" height="10" alt="" /> -->
         @if(true) {
         <p [ngStyle]="{ color: getPriorityColor(academy.id) }">
-            {{ academy.accountStatus | translate }}
+            {{ academy.statusId | translate }}
         </p> }
     </div>
 </button>
