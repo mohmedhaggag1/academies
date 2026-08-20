@@ -1,11 +1,15 @@
 <div class="floors flex-column gap-y-2 h-100 pt-4 px-5">
 
+    <!-- ============================== -->
     <!-- Header -->
+    <!-- ============================== -->
+
     <div class="flex aic jcsb gap-x-2">
 
         <div class="flex aic pointer" routerLink="../../">
 
-            <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }"></i>
+            <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }">
+            </i>
 
             <span>
                 {{ 'back' | translate }}
@@ -20,83 +24,168 @@
     </div>
 
 
-    <!-- Search + Add -->
-    <div class="flex-grid  gap-x-2 gap-y-2">
+    <!-- ============================== -->
+    <!-- Filters + Bulk Action -->
+    <!-- ============================== -->
 
-        <!-- <div class="col-lg-3">
-            <search searchPlaceHolder="search" (valueChanged)="search($event)">
-            </search>
-        </div> -->
+    <div class="flex-grid gap-x-2 gap-y-2">
+        <!-- Country -->
 
         <div class="col-lg-2">
+
             <country-receipt-filter />
+
         </div>
 
-         <div class="col-lg-2">
-            <payment-status />
-        </div>
 
-         <div class="col-lg-2">
-            <bank-account-status-filter />
-        </div>
+        <!-- Payment Status -->
 
         <div class="col-lg-2">
-            <date-range-filter (dateRangeChange)="onDateRangeChange($event)"></date-range-filter>
+
+            <payment-status />
+
         </div>
+
+
+        <!-- Bank Account Status -->
+
+        <div class="col-lg-2">
+
+            <bank-account-status-filter />
+
+        </div>
+
+
+        <!-- Date -->
+
+        <div class="col-lg-2">
+
+            <date-range-filter (dateRangeChange)="onDateRangeChange($event)">
+            </date-range-filter>
+
+        </div>
+
+        <!-- Bulk Invoice Button -->
+
+        @if (selectedAcademies.length > 0) {
+
+        <div class="col-lg-3 flex aic">
+
+            <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
+                (click)="sendBulkInvoices()">
+
+                <span>
+                    {{ 'send_to_all' | translate }}
+
+                    ({{ selectedAcademies.length }})
+                </span>
+            </button>
+
+        </div>
+
+        }
 
     </div>
 
 
+    <!-- ============================== -->
     <!-- Table -->
+    <!-- ============================== -->
+
     <div class="table-data bg-white relative height-with-tabs" magicScroll>
 
         @if (!loading) {
 
         <table class="table w-100 rounded bg-white">
 
-            <thead>
+            <thead class="border-bottom">
 
                 <tr class="primary">
 
-                    <!-- Status -->
+                    <!-- SELECT ALL -->
+
                     <th class="text-center">
+
+                        <mat-checkbox [checked]="isAllSelected()" [indeterminate]="isSomeSelected()"
+                            (change)="toggleSelectAll($event.checked)">
+                        </mat-checkbox>
+
+                    </th>
+
+
+                    <!-- STATUS -->
+
+                    <th class="text-center">
+
                         {{ 'transfer_status' | translate }}
+
                     </th>
 
-                    <!-- Account -->
+
+                    <!-- ACCOUNT -->
+
                     <th class="text-center">
+
                         {{ 'account' | translate }}
+
                     </th>
 
-                    <!-- Receipt -->
+
+                    <!-- RECEIPT -->
+
                     <th class="text-center">
+
                         {{ 'transfer_receipt' | translate }}
+
                     </th>
 
-                    <!-- Payment Method -->
+
+                    <!-- PAYMENT METHOD -->
+
                     <th class="text-center">
+
                         {{ 'payment_method' | translate }}
+
                     </th>
 
-                    <!-- Exchange Rate -->
+
+                    <!-- EXCHANGE RATE -->
+
                     <th class="text-center">
+
                         {{ 'exchange_rate' | translate }}
+
                     </th>
 
-                    <!-- Total -->
+
+                    <!-- TOTAL -->
+
                     <th class="text-center">
+
                         {{ 'total_egp' | translate }}
+
                     </th>
 
-                    <!-- Date -->
+
+                    <!-- DATE -->
+
                     <th class="text-center">
+
                         {{ 'date' | translate }}
+
                     </th>
 
-                    <!-- Invoice -->
+
+                    <!-- INVOICE -->
+
                     <th class="text-center">
+
                         {{ 'transfer_img' | translate }}
+
                     </th>
+
+
+                    <!-- ACTIONS -->
 
                     <th></th>
 
@@ -105,37 +194,77 @@
             </thead>
 
 
+            <!-- ============================== -->
+            <!-- TBODY -->
+            <!-- ============================== -->
+
             <tbody>
 
                 @if (houseUnits.length > 0) {
 
                 <tr class="black rounded" *ngFor="
-                        let academy of houseUnits
-                        | paginate : {
-                            itemsPerPage: pageSize,
-                            currentPage: currentPage
-                        };
-                        trackBy: trackBy
-                    ">
+                                let academy of houseUnits
+                                | paginate : {
+                                    itemsPerPage: pageSize,
+                                    currentPage: currentPage
+                                };
+                                trackBy: trackBy
+                            ">
 
-                    <!-- STATUS -->
-                   <td class="text-center" (click)="$event.stopPropagation()">
-                        <!-- <priority [priorityId]="academy.statusId" [priorityName]="academy.status" /> -->
-                         <transfer-status [academy]="academy"/>
-                    </td>
+
+                    <!-- ============================== -->
+                    <!-- SELECT -->
+                    <!-- ============================== -->
 
                     <td class="text-center" (click)="$event.stopPropagation()">
-                        <app-account-status [academy]="academy" />
+
+                        <mat-checkbox [checked]="isSelected(academy)" (change)="
+                                        toggleSelection(
+                                            academy,
+                                            $event.checked
+                                        )
+                                    ">
+                        </mat-checkbox>
+
                     </td>
 
 
-                    <!-- TRANSFER RECEIPT -->
+                    <!-- ============================== -->
+                    <!-- STATUS -->
+                    <!-- ============================== -->
+
+                    <td class="text-center" (click)="$event.stopPropagation()">
+
+                        <transfer-status [academy]="academy">
+                        </transfer-status>
+
+                    </td>
+
+
+                    <!-- ============================== -->
+                    <!-- ACCOUNT -->
+                    <!-- ============================== -->
+
+                    <td class="text-center" (click)="$event.stopPropagation()">
+
+                        <app-account-status [academy]="academy">
+                        </app-account-status>
+
+                    </td>
+
+
+                    <!-- ============================== -->
+                    <!-- RECEIPT -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (editingId !== academy.id) {
 
                         <span>
+
                             {{ academy.receiptNumber }}
+
                         </span>
 
                         } @else {
@@ -147,13 +276,18 @@
                     </td>
 
 
+                    <!-- ============================== -->
                     <!-- PAYMENT METHOD -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (editingId !== academy.id) {
 
                         <span>
+
                             {{ academy.paymentMethod }}
+
                         </span>
 
                         } @else {
@@ -179,13 +313,18 @@
                     </td>
 
 
+                    <!-- ============================== -->
                     <!-- EXCHANGE RATE -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (editingId !== academy.id) {
 
                         <span>
+
                             {{ academy.exchangeRate }}
+
                         </span>
 
                         } @else {
@@ -197,13 +336,19 @@
                     </td>
 
 
+                    <!-- ============================== -->
                     <!-- TOTAL EGP -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (editingId !== academy.id) {
 
                         <span class="fw-bold">
-                            EGP {{ academy.totalEgp | number:'1.2-2' }}
+
+                            EGP
+                            {{ academy.totalEgp | number:'1.2-2' }}
+
                         </span>
 
                         } @else {
@@ -215,13 +360,18 @@
                     </td>
 
 
+                    <!-- ============================== -->
                     <!-- DATE -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (editingId !== academy.id) {
 
                         <span>
+
                             {{ academy.date | date:'yyyy-MM-dd' }}
+
                         </span>
 
                         } @else {
@@ -233,7 +383,10 @@
                     </td>
 
 
+                    <!-- ============================== -->
                     <!-- INVOICE -->
+                    <!-- ============================== -->
+
                     <td class="text-center">
 
                         @if (academy.invoiceUrl) {
@@ -247,24 +400,27 @@
                         } @else {
 
                         <span class="muted">
+
                             -
+
                         </span>
 
                         }
 
                     </td>
 
-
-                    <!-- ACTIONS -->
                     <td class="text-center" (click)="$event.stopPropagation()">
 
                         @if (editingId !== academy.id) {
 
                         <img src="/icons/menu.svg" class="pointer px-1" [matMenuTriggerFor]="menu" alt="menu icon" />
 
+
                         <mat-menu #menu="matMenu" class="filter-menu">
 
                             <div dir="auto">
+
+                                <!-- EDIT -->
 
                                 <button mat-menu-item (click)="editAcademy(academy)">
 
@@ -273,13 +429,20 @@
                                         <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
 
                                         <p class="ml-1">
-                                            {{ "edit_academy" | translate }}
+
+                                            {{
+                                            "edit_academy"
+                                            | translate
+                                            }}
+
                                         </p>
 
                                     </div>
 
                                 </button>
 
+
+                                <!-- DELETE -->
 
                                 <button mat-menu-item (click)="deleteAcademy(academy)">
 
@@ -288,7 +451,12 @@
                                         <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
 
                                         <p class="ml-1">
-                                            {{ "delete_academy" | translate }}
+
+                                            {{
+                                            "delete_academy"
+                                            | translate
+                                            }}
+
                                         </p>
 
                                     </div>
@@ -303,12 +471,17 @@
 
                         <div class="flex aic gap-x-1">
 
+                            <!-- SAVE -->
+
                             <button type="button" class="clickable-btn bg-primary px-2 rounded"
                                 (click)="saveAcademy(academy)">
 
                                 {{ 'save' | translate }}
 
                             </button>
+
+
+                            <!-- CANCEL -->
 
                             <button type="button" class="clickable-btn px-2 rounded" (click)="cancelEdit(academy)">
 
@@ -325,6 +498,11 @@
                 </tr>
 
                 }
+
+
+                <!-- ============================== -->
+                <!-- EMPTY -->
+                <!-- ============================== -->
 
                 @if (houseUnits.length === 0) {
 
@@ -346,29 +524,21 @@
 
         }
 
-
         @if (loading) {
-
         <rectangle-skeleton class="w-100 h-100" />
-
         }
 
     </div>
 
-
-    <!-- Pagination -->
     @if (
-    houseUnits.length > pageSize && !loading
+    houseUnits.length > pageSize &&
+    !loading
     ) {
 
     <div class="flex-center">
-
         <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel="" nextLabel=""
             (pageChange)="pageChanged($event)">
         </pagination-controls>
-
     </div>
-
     }
-
 </div>

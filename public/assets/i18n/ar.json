@@ -58,5 +58,7 @@
   "bank_account_status": "حالة الحساب البنكي",
   "chang_password" : "تغيير كلمة المرور",
   "completed" : "تأكيد",
-  "not_arrived": "لم تصل"
+  "not_arrived": "لم تصل",
+  "send_to_all" : "إرسال للمحددة",
+  "selected_academies" : "الأكاديميات المحددة"
 }

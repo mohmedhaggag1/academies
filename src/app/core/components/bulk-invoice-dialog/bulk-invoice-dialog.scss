@@ -1,0 +1,460 @@
+.bulk-invoice-dialog {
+
+    width: 100%;
+    padding: 24px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ========================================== */
+/* HEADER */
+/* ========================================== */
+
+.dialog-header {
+
+    margin-bottom: 20px;
+
+}
+
+
+.dialog-header h2 {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+
+}
+
+
+/* ========================================== */
+/* CLOSE */
+/* ========================================== */
+
+.dialog-close {
+
+    width: 36px;
+
+    height: 36px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #6b7280;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.dialog-close:hover {
+
+    background: #f3f4f6;
+
+    color: #111827;
+
+}
+
+
+/* ========================================== */
+/* SELECTED SECTION */
+/* ========================================== */
+
+.selected-section {
+
+    margin-bottom: 18px;
+
+}
+
+
+.selected-label {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #6b7280;
+
+    margin-bottom: 10px;
+
+}
+
+
+.selected-list {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+/* ========================================== */
+/* ACADEMY CHIP */
+/* ========================================== */
+
+.academy-chip {
+
+    max-width: 190px;
+
+    min-width: 0;
+
+    height: 34px;
+
+    padding: 0 10px;
+
+    box-sizing: border-box;
+
+    background: #f7f9fc;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+}
+
+
+/* ========================================== */
+/* CODE */
+/* ========================================== */
+
+.academy-chip-code {
+
+    flex-shrink: 0;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: #2563eb;
+
+    white-space: nowrap;
+
+}
+
+
+/* ========================================== */
+/* NAME */
+/* ========================================== */
+
+.academy-chip-name {
+
+    min-width: 0;
+
+    font-size: 12px;
+
+    color: #4b5563;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* ========================================== */
+/* MORE */
+/* ========================================== */
+
+.academy-more {
+
+    height: 34px;
+
+    padding: 0 11px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    white-space: nowrap;
+
+}
+
+
+/* ========================================== */
+/* UPLOAD AREA */
+/* ========================================== */
+
+.upload-area {
+
+    width: 100%;
+
+    height: 320px;
+
+    min-height: 320px;
+
+    max-height: 320px;
+
+    box-sizing: border-box;
+
+    border: 2px dashed #d7dce5;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fafbfc;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+.upload-area:hover {
+
+    border-color: #2563eb;
+
+    background: #f8faff;
+
+}
+
+
+.upload-area.has-image {
+
+    border-style: solid;
+
+    border-color: #e5e7eb;
+
+    background: #111827;
+
+}
+
+
+/* ========================================== */
+/* EMPTY UPLOAD CONTENT */
+/* ========================================== */
+
+.upload-content {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    text-align: center;
+
+}
+
+
+/* ========================================== */
+/* UPLOAD ICON */
+/* ========================================== */
+
+.upload-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 12px;
+
+    background: #eef4ff;
+
+    color: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+}
+
+
+.upload-icon i {
+
+    font-size: 30px;
+
+}
+
+
+/* ========================================== */
+/* UPLOAD TITLE */
+/* ========================================== */
+
+.upload-title {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+
+}
+
+
+/* ========================================== */
+/* UPLOAD DESCRIPTION */
+/* ========================================== */
+
+.upload-description {
+
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+}
+
+
+/* ========================================== */
+/* IMAGE CROPPER */
+/* ========================================== */
+
+.upload-area image-cropper {
+
+    display: block;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 100% !important;
+
+}
+
+
+/*
+ * ngx-image-cropper internal elements
+ * لازم نمنع الـ cropper من تكبير الـ container
+ */
+
+::ng-deep .upload-area image-cropper {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 100% !important;
+
+    display: block !important;
+
+}
+
+
+/* ========================================== */
+/* ACTIONS */
+/* ========================================== */
+
+.dialog-actions {
+
+    margin-top: 20px;
+
+}
+
+
+.dialog-actions button {
+
+    min-width: 90px;
+
+}
+
+
+.dialog-actions button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+
+@media (max-width: 600px) {
+
+    .bulk-invoice-dialog {
+
+        padding: 18px;
+
+    }
+
+
+    .upload-area {
+
+        height: 280px;
+
+        min-height: 280px;
+
+        max-height: 280px;
+
+    }
+
+
+    .academy-chip {
+
+        max-width: 160px;
+
+    }
+
+}

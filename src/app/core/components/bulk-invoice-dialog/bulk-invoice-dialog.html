@@ -1,0 +1,245 @@
+<div class="bulk-invoice-dialog" dir="auto">
+
+
+    <!-- ====================================== -->
+    <!-- HEADER -->
+    <!-- ====================================== -->
+
+    <div class="dialog-header flex aic jcsb">
+
+        <h2 class="m-0">
+
+            {{ 'send_invoice' | translate }}
+
+        </h2>
+
+
+        <button
+            type="button"
+            class="dialog-close clickable"
+            (click)="cancel()"
+        >
+
+            <i class="bx bx-x bx-md"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- ====================================== -->
+    <!-- SELECTED ACADEMIES -->
+    <!-- ====================================== -->
+
+    @if (data.academies.length > 0) {
+
+        <div class="selected-section">
+
+
+            <div class="selected-label">
+
+                {{ 'selected_academies' | translate }}
+
+            </div>
+
+
+            <div class="selected-list">
+
+
+                <!-- FIRST 3 -->
+
+                @for (
+                    academy of data.academies.slice(0, 3);
+                    track academy.id
+                ) {
+
+                    <div class="academy-chip">
+
+
+                        <span class="academy-chip-code">
+
+                            {{ academy.code }}
+
+                        </span>
+
+
+                        <span
+                            class="academy-chip-name"
+                            [title]="academy.name"
+                        >
+
+                            {{ academy.name }}
+
+                        </span>
+
+
+                    </div>
+
+                }
+
+
+                <!-- MORE -->
+
+                @if (data.academies.length > 3) {
+
+                    <div class="academy-more">
+
+                        +{{ data.academies.length - 3 }}
+
+                        {{ 'more' | translate }}
+
+                    </div>
+
+                }
+
+
+            </div>
+
+        </div>
+
+    }
+
+
+    <!-- ====================================== -->
+    <!-- UPLOAD / CROP -->
+    <!-- ====================================== -->
+
+    <div magicScroll=""
+        class="upload-area"
+        [class.has-image]="imageChangedEvent"
+    >
+
+
+        <!-- ================================== -->
+        <!-- EMPTY STATE -->
+        <!-- ================================== -->
+
+        @if (!imageChangedEvent) {
+
+            <label
+                for="invoiceImage"
+                class="upload-content"
+            >
+
+
+                <div class="upload-icon">
+
+                    <i class="bx bx-cloud-upload"></i>
+
+                </div>
+
+
+                <div class="upload-title">
+
+                    {{ 'upload_invoice_image' | translate }}
+
+                </div>
+
+
+                <div class="upload-description">
+
+                    {{ 'drag_drop_or_click_to_upload' | translate }}
+
+                </div>
+
+
+                <input
+                    id="invoiceImage"
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    (change)="fileChangeEvent($event)"
+                />
+
+
+            </label>
+
+        }
+
+
+        <!-- ================================== -->
+        <!-- IMAGE CROPPER -->
+        <!-- ================================== -->
+
+        @if (imageChangedEvent) {
+
+            <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+
+                [maintainAspectRatio]="false"
+
+                [resizeToWidth]="1000"
+
+                [onlyScaleDown]="true"
+
+                [containWithinAspectRatio]="true"
+
+                format="png"
+
+                (imageCropped)="imageCropped($event)"
+            >
+            </image-cropper>
+
+        }
+
+
+    </div>
+
+
+    <!-- ====================================== -->
+    <!-- ACTIONS -->
+    <!-- ====================================== -->
+
+    <div class="dialog-actions flex aic jce gap-x-2">
+
+
+        <!-- CANCEL -->
+
+        <button
+            type="button"
+            class="clickable-btn px-3 rounded"
+            (click)="cancel()"
+        >
+
+            {{ 'cancel' | translate }}
+
+        </button>
+
+
+        <!-- CHANGE IMAGE -->
+
+        @if (imageChangedEvent) {
+
+            <button
+                type="button"
+                class="clickable-btn px-3 rounded"
+                (click)="removeImage()"
+            >
+
+                {{ 'change_image' | translate }}
+
+            </button>
+
+        }
+
+
+        <!-- SEND -->
+
+        <button
+            type="button"
+            class="clickable-btn bg-primary px-3 rounded"
+
+            [disabled]="!croppedImage"
+
+            (click)="confirm()"
+        >
+
+            {{ 'send' | translate }}
+
+        </button>
+
+
+    </div>
+
+
+</div>

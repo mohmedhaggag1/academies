@@ -58,5 +58,7 @@
   "bank_account_status": "Bank Account Status",
   "chang_password" : "Change Password",
   "completed": "Completed",
-  "not_arrived": "Not Arrived"
+  "not_arrived": "Not Arrived",
+  "send_to_all": "Send To All",
+  "selected_academies": "Selected Academies"
 }
