@@ -15,7 +15,7 @@ import { PriorityComponent } from '../../core/components/priority.component';
 
 import { MatDialog } from '@angular/material/dialog';
 import { AlertService } from '../../core/services/alert.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { AccountStatusSelect } from "../../core/components/maintenance-status-select/maintenance-status-select.component";
 import { AccountStatus } from "../../core/components/account-status/account-status";
 import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
@@ -41,7 +41,8 @@ import { DateRange } from "../../core/components/date-range/date-range";
     CountryReceiptFilterComponent,
     PaymentStatusComponent,
     BankAccountStatusFilter,
-    DateRange
+    DateRange,
+    RouterModule
 ],
 
   templateUrl: './academy-details.html',

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'logo',
     imports: [],
     template: `
-    <img src="assets/images/logo/{{ icon }}.svg" alt="logo icon" width="100%" />
+    <img src="/icons/logo1.png" alt="logo icon" width="50px" />
   `,
     styles: ``
 })

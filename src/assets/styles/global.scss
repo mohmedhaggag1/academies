@@ -63,11 +63,11 @@ $space_gaps: 2rem;
 }
 
 :dir(ltr) .height-without-tabs {
-  height: calc(100vh - $navbar_height_ltr - $search_input_height_ltr - $pagination_height_ltr - $padding - 2 * $space_gaps - 1rem) !important;
+  height: calc(100vh - $navbar_height_ltr - $search_input_height_ltr - $pagination_height_ltr - $padding - 2 * $space_gaps - 5rem) !important;
 }
 
 :dir(rtl) .height-without-tabs {
-  height: calc(100vh - $navbar_height_rtl - $search_input_height_rtl - $pagination_height_rtl - $padding - 2 * $space_gaps - 1rem) !important;
+  height: calc(100vh - $navbar_height_rtl - $search_input_height_rtl - $pagination_height_rtl - $padding - 2 * $space_gaps - 5rem) !important;
 }
 
 :dir(ltr) .height-with-tabs {

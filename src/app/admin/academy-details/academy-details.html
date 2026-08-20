@@ -1,12 +1,11 @@
-<div class="floors flex-column gap-y-2 h-100 p-5">
+<div class="floors flex-column gap-y-2 h-100 pt-4 px-5">
 
     <!-- Header -->
     <div class="flex aic jcsb gap-x-2">
 
         <div class="flex aic pointer" routerLink="../../">
 
-            <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }">
-            </i>
+            <i class="bx bx-left-arrow-alt bx-md" [ngClass]="{ 'bx-flip-horizontal': isRtl }"></i>
 
             <span>
                 {{ 'back' | translate }}
@@ -37,19 +36,19 @@
             </span> 
 
         </button> -->
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <country-receipt-filter />
         </div>
 
-         <div class="col-lg-3">
+         <div class="col-lg-2">
             <payment-status />
         </div>
 
-         <div class="col-lg-3">
+         <div class="col-lg-2">
             <bank-account-status-filter />
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <date-range-filter (dateRangeChange)="onDateRangeChange($event)"></date-range-filter>
         </div>
 

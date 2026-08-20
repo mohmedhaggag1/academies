@@ -20,62 +20,29 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'navbar',
   template: `
-    <div class="navbar flex aic jcsb px-3 pt-1 bg-white py-1">
-      <!-- <div class="w-10">
-        <logo/>
-      </div> -->
-      <!-- <h3 class="primary">{{currentPageTitle.header() | translate}}</h3> -->
-      @if (role != 'SuperAdmin') {
-        <p class="danger bold fs-14" *ngIf="daysLeft && daysLeft <= 14">{{'subscription_ends_in_days' | translate:{days: daysLeft} }}</p>
-      }
+    <div class="navbar flex aic jcsb px-4 pt-1 bg-white">
+        <logo></logo>
       <div class="flex aic gap-x-2">
-        <!-- notification -->
-        <!-- @if(offersAlertsPermissions.canView) { -->
-        <div class="notification-icon w-2 relative">
-          <!-- @if(notificationsService.notifications$ | async; as notifications) {
-            @if(notifications.maintenanceCount > 0) {
-              <div (click)="openNotifications($event)">
-                <div class="notification-badge flex aic jcc p-1 white bg-danger pointer">{{notifications.maintenanceCount}}</div>
-                <div class="flex aic mr-2">
-                  <img
-                    src="assets/images/sidebar/new-notification.svg"
-                    width="35px"
-                    alt="notifications icon"
-                    class="pointer"
-                  />
-                </div>
-              </div>
-            } @else {
-              <img
-                src="assets/images/sidebar/new-notification.svg"
-                width="35px"
-                alt="notifications icon"
-              />
-            }
-          } -->
-        </div>
-        <!-- } -->
 
         <div class="flex aic gap-x-1 border round-25 bg-white px-1 py-50">
           <div class="img-profile">
             <img
-              [src]="profileUrl"
+              src="/icons/user.svg"
               alt="profile picture"
-              class="img-profile rounded-50"
+              class="img-profile"
             />
           </div>
           <div class="user-name-container">
             <p class="user-name">
-              {{ userName }}
+              {{ 'haggag' }}
             </p>
-            @if (role != 'SuperAdmin') {
               <div
                 class="w-fit-content flex aic pointer"
                 [cdkCopyToClipboard]="companyCode"
                 (click)="copy($event)"
               >
                 <img
-                  src="assets/images/icons/copy.svg"
+                  src="/icons/copy.svg"
                   alt="copy image"
                   width="12"
                 />
@@ -83,7 +50,6 @@ import { MatDialog } from '@angular/material/dialog';
                   {{ companyCode || '--' }}
                 </p>
               </div>
-            }
           </div>
           <div class="px-1 pointer" [matMenuTriggerFor]="menu">
             <i class="bx bx-chevron-down"></i>
@@ -94,17 +60,6 @@ import { MatDialog } from '@angular/material/dialog';
 
     <mat-menu #menu="matMenu" class="filter-menu">
       <div dir="auto">
-        <button mat-menu-item routerLink="my-profile" routerLinkActive="active">
-          <div class="flex aic gap-x-2">
-            <img
-              src="assets/images/icons/user.svg"
-              width="15"
-              height="15"
-              alt="user icon"
-            />
-            <p class="bold">{{ 'profile' | translate }}</p>
-          </div>
-        </button>
         <button
           mat-menu-item
           routerLink="change-password"
@@ -112,7 +67,7 @@ import { MatDialog } from '@angular/material/dialog';
         >
           <div class="flex aic gap-x-2">
             <img
-              src="assets/images/icons/lock.svg"
+              src="/icons/lock.svg"
               width="15"
               height="15"
               alt="lock icon"
@@ -120,27 +75,11 @@ import { MatDialog } from '@angular/material/dialog';
             <p class="bold">{{ 'change_password' | translate }}</p>
           </div>
         </button>
-        @if(isAdminDefault && role != 'SuperAdmin') {
-          <button
-            mat-menu-item
-            routerLink="subscription"
-            routerLinkActive="active"
-          >
-            <div class="flex aic gap-x-2">
-              <img
-                src="assets/images/icons/subscription.svg"
-                width="15"
-                height="15"
-                alt="subscription icon"
-              />
-              <p class="bold">{{ 'subscription' | translate }}</p>
-            </div>
-          </button>
-        }
+       
         <button mat-menu-item [matMenuTriggerFor]="language">
           <div class="flex aic gap-x-2">
             <img
-              src="assets/images/icons/language.svg"
+              src="/icons/language.svg"
               width="15"
               height="15"
               alt="language icon"
@@ -151,7 +90,7 @@ import { MatDialog } from '@angular/material/dialog';
         <button mat-menu-item (click)="logout()">
           <div class="flex aic gap-x-2">
             <img
-              src="assets/images/icons/logout.svg"
+              src="/icons/logout.svg"
               width="15"
               height="15"
               alt="logout icon"
@@ -219,7 +158,7 @@ import { MatDialog } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    // LogoComponent,
+    LogoComponent,
     MatMenuModule,
     TranslateModule,
     RouterModule,
@@ -235,21 +174,21 @@ export class NavbarComponent {
   dialog = inject(MatDialog);
   // notificationsService = inject(PushNotificationService);
   dir = document.dir;
-  profileUrl: string = 'assets/images/no-user.jpg';
+  profileUrl: string = '/no-user.jpg';
   userName: string = '';
   role = localStorage.getItem('role') || null;
   companyCode = localStorage.getItem('companyCode') || 'XS41b';
   daysLeft = 0;
   // currentPageTitle = inject(CurrentPageService);
   isAdminDefault: boolean = false;
-  
+
   // Permission properties
   // offersAlertsPermissions: Permissions = {
-    // canView: false,
-    // canCreate: false,
-    // canEdit: false,
-    // canDelete: false,
-    // canPrint: false,
+  // canView: false,
+  // canCreate: false,
+  // canEdit: false,
+  // canDelete: false,
+  // canPrint: false,
   // };
 
   constructor(private router: Router) {
@@ -272,7 +211,7 @@ export class NavbarComponent {
     //     localStorage.setItem('isSms', res.isSms)
     //     this.profileUrl = res.path
     //       ? `${environment.imageUrl}${res.path}`
-    //       : 'assets/images/no-user.jpg';
+    //       : '/no-user.jpg';
 
     //     this.userName = this.dir === 'ltr' ? res.nameEn : res.nameAr;
     //   }
@@ -303,12 +242,12 @@ export class NavbarComponent {
     const rect = target.getBoundingClientRect();
     const top = rect.top + window.scrollY + rect.height + 10; // Adjust the top position
     const left = rect.left + window.scrollX - 150; // Adjust the left position
-  //   this.dialog.open(NotificationsListComponent, {
-  //     autoFocus: false,
-  //     position: { top: `${top}px`, left: `${left}px` },
-  //     panelClass: 'small-dialog',
-  //     data: {},
-  //   });
+    //   this.dialog.open(NotificationsListComponent, {
+    //     autoFocus: false,
+    //     position: { top: `${top}px`, left: `${left}px` },
+    //     panelClass: 'small-dialog',
+    //     data: {},
+    //   });
   }
 
   switchLanguage() {
@@ -326,7 +265,7 @@ export class NavbarComponent {
 
   copy(event: MouseEvent) {
     event.stopPropagation();
-    this.alert.showAlert('code_copied');
+    this.alert.showAlert('academy_id_copied');
   }
 
   logout() {
