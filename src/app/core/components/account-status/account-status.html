@@ -1,6 +1,6 @@
 <button type="button" class="account-status-btn" [matMenuTriggerFor]="accountMenu" (click)="selectedAcademy = academy">
 
-    <span class="account-status text-right" [ngClass]="{
+    <!-- <span class="account-status text-right" [ngClass]="{
                   'green': academy.accountStatus == 'active' ,
                   'danger': academy.accountStatus == 'inactive'      }">
 
@@ -10,8 +10,16 @@
         </span>
     </span>
 
-    <i class="bx bx-chevron-down"></i>
+    <i class="bx bx-chevron-down"></i> -->
 
+     <div class="flex aic" dir="auto">
+      <img src="/icons/hight.svg" *ngIf="academy.accountStatus == 'active'" width="10" height="10" alt="" />
+      <img src="/icons/low.svg" *ngIf="academy.accountStatus == 'inactive'" width="10" height="10" alt="" />
+      @if(true) {
+    <p class="ml-50" [ngStyle]="{ color: getPriorityColor(academy.id) }">
+    {{ academy.accountStatus  | translate }}
+  </p>      }
+    </div>
 </button>
 
 <mat-menu #accountMenu="matMenu">

@@ -45,9 +45,9 @@ export class AccountStatus {
 
   getPriorityColor(id: number): any {
     switch (id) {
-      case 1: return '#FF4D4F';
+      case 2: return '#FF4D4F';
 
-      case 3: return '#21b711';
+      case 1: return '#21b711';
     }
   }
 }
