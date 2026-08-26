@@ -9,7 +9,7 @@
 
         <h2 class="m-0">
 
-            {{ 'send_invoice' | translate }}
+            {{ 'send' | translate }}
 
         </h2>
 
@@ -35,7 +35,6 @@
 
         <div class="selected-section">
 
-
             <div class="selected-label">
 
                 {{ 'selected_academies' | translate }}
@@ -45,7 +44,6 @@
 
             <div class="selected-list">
 
-
                 <!-- FIRST 3 -->
 
                 @for (
@@ -54,7 +52,6 @@
                 ) {
 
                     <div class="academy-chip">
-
 
                         <span class="academy-chip-code">
 
@@ -72,13 +69,12 @@
 
                         </span>
 
-
                     </div>
 
                 }
 
 
-                <!-- MORE -->
+                <!-- other -->
 
                 @if (data.academies.length > 3) {
 
@@ -86,12 +82,11 @@
 
                         +{{ data.academies.length - 3 }}
 
-                        {{ 'more' | translate }}
+                        {{ 'other' | translate }}
 
                     </div>
 
                 }
-
 
             </div>
 
@@ -101,26 +96,34 @@
 
 
     <!-- ====================================== -->
-    <!-- UPLOAD / CROP -->
+    <!-- UPLOAD -->
     <!-- ====================================== -->
 
-    <div magicScroll=""
+    <div
         class="upload-area"
-        [class.has-image]="imageChangedEvent"
+
+        [class.has-image]="imagePreview"
+
+        [class.dragging]="isDragging"
+
+        (dragover)="onDragOver($event)"
+
+        (dragleave)="onDragLeave($event)"
+
+        (drop)="onDrop($event)"
     >
 
 
         <!-- ================================== -->
-        <!-- EMPTY STATE -->
+        <!-- EMPTY -->
         <!-- ================================== -->
 
-        @if (!imageChangedEvent) {
-
+        @if (!imagePreview) {
+ 
             <label
                 for="invoiceImage"
                 class="upload-content"
             >
-
 
                 <div class="upload-icon">
 
@@ -145,12 +148,15 @@
 
                 <input
                     id="invoiceImage"
+
                     type="file"
+
                     accept="image/*"
+
                     hidden
+
                     (change)="fileChangeEvent($event)"
                 />
-
 
             </label>
 
@@ -158,88 +164,73 @@
 
 
         <!-- ================================== -->
-        <!-- IMAGE CROPPER -->
+        <!-- IMAGE PREVIEW -->
         <!-- ================================== -->
 
-        @if (imageChangedEvent) {
+        @if (imagePreview) {
 
-            <image-cropper
-                [imageChangedEvent]="imageChangedEvent"
+            <div class="image-preview">
 
-                [maintainAspectRatio]="false"
+                <img
+                    [src]="imagePreview"
+                    alt="Invoice preview"
+                />
 
-                [resizeToWidth]="1000"
-
-                [onlyScaleDown]="true"
-
-                [containWithinAspectRatio]="true"
-
-                format="png"
-
-                (imageCropped)="imageCropped($event)"
-            >
-            </image-cropper>
+            </div>
 
         }
 
-
     </div>
+
+
+    <!-- ====================================== -->
+    <!-- FILE NAME -->
+    <!-- ====================================== -->
+
+    @if (selectedFile) {
+
+        <div class="selected-file flex aic jcsb">
+
+            <div class="flex aic gap-x-1">
+
+                <i class="bx bx-image"></i>
+
+                <span>
+
+                    {{ selectedFile.name }}
+
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="remove-file clickable"
+                (click)="removeImage()"
+            >
+
+                <i class="bx bx-trash"></i>
+
+            </button>
+
+        </div>
+
+    }
 
 
     <!-- ====================================== -->
     <!-- ACTIONS -->
     <!-- ====================================== -->
-
-    <div class="dialog-actions flex aic jce gap-x-2">
-
-
-        <!-- CANCEL -->
-
-        <button
-            type="button"
-            class="clickable-btn px-3 rounded"
-            (click)="cancel()"
-        >
-
-            {{ 'cancel' | translate }}
-
-        </button>
-
-
-        <!-- CHANGE IMAGE -->
-
-        @if (imageChangedEvent) {
-
-            <button
-                type="button"
-                class="clickable-btn px-3 rounded"
-                (click)="removeImage()"
-            >
-
-                {{ 'change_image' | translate }}
-
-            </button>
-
-        }
-
-
-        <!-- SEND -->
-
-        <button
-            type="button"
-            class="clickable-btn bg-primary px-3 rounded"
-
-            [disabled]="!croppedImage"
-
-            (click)="confirm()"
-        >
-
-            {{ 'send' | translate }}
-
-        </button>
-
-
-    </div>
+<div mat-dialog-actions class="w-50 mx-auto mt-2">
+    
+    <button
+      class="clickable-btn bg-primary py-80 w-100 rounded bold fs-18 mb-1"
+       [disabled]="!selectedFile" (click)="confirm()"
+    >
+      <submit-button [loading]="loading" [text]="'save'" />
+    </button>
+  </div>
 
 
 </div>

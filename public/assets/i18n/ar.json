@@ -60,5 +60,9 @@
   "completed" : "تأكيد",
   "not_arrived": "لم تصل",
   "send_to_all" : "إرسال للمحددة",
-  "selected_academies" : "الأكاديميات المحددة"
+  "selected_academies" : "الأكاديميات المحددة",
+  "send" : "إرســـــال",
+  "drag_drop_or_click_to_upload" : "Drag & Drop or Click to Upload",
+  "upload_invoice_image" : "Upload Invoice Image",
+  "other": "آخرين"
 }

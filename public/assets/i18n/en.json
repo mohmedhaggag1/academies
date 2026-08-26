@@ -60,5 +60,9 @@
   "completed": "Completed",
   "not_arrived": "Not Arrived",
   "send_to_all": "Send To All",
-  "selected_academies": "Selected Academies"
+  "selected_academies": "Selected Academies",
+  "send" : "Send",
+  "drag_drop_or_click_to_upload" : "اسحب وأفلت أو انقر للتحميل",
+  "upload_invoice_image": "تحميل صورة الفاتورة",
+  "other": "Others"
 }
