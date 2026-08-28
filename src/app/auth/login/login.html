@@ -22,9 +22,9 @@
         </div>
 
         <!-- Email Input -->
-        <escoba-input key="code" [control]="f['email']">
-          <input type="email" class="input" name="email" [attr.placeholder]="'email' | translate"
-            formControlName="email" />
+        <escoba-input key="code" [control]="f['username']">
+          <input type="username" class="input" name="username" [attr.placeholder]="'code' | translate"
+            formControlName="username" />
         </escoba-input>
 
         <!-- Password Input -->
@@ -35,17 +35,17 @@
           </input-password>
         </div>
 
-        <div class="flex-center jcfe mt-1 mb-4">
-          <!--          <div class="flex-center">-->
-          <!--            <input-->
-          <!--              type="checkbox"-->
-          <!--              id="rememberCheckbox"-->
-          <!--              name="rememberCheckbox"-->
-          <!--              formControlName="rememberCheckbox">-->
-          <!--            <label class="fs-13 bold" for="rememberCheckbox">{{ 'remember' | translate }} </label>-->
-          <!--          </div>-->
-          <a class="fs-13 pointer bold primary" routerLink="/auth/forgot-password">{{ "forgot_password" | translate
-            }}</a>
+        <div class="flex-center jcfs mt-1 mb-4">
+                   <div class="flex-center">
+                     <input
+                        type="checkbox"
+                        id="isAdmin"
+                        name="isAdmin"
+                        formControlName="isAdmin">
+                      <label class="fs-13 bold" for="isAdmin">{{ 'is_admin' | translate }} </label>
+                    </div>
+          <!-- <p class="fs-13 pointer bold primary" routerLink="/auth/forgot-password">{{ "forgot_password" | translate
+            }}</p> -->
         </div>
 
         <!-- Submit Button -->
