@@ -48,26 +48,50 @@ export class Login {
     });
   }
 
-  submit() {
-    if (this.form.valid) {
-      this.loading = true;
-      this.service.login(this.form.value).subscribe(
-        (res: any) => {
-          if (res.success) {
-            localStorage.setItem('token', res.data.accessToken);
-            localStorage.setItem('userIdentityId', res.data.user.id);
-            localStorage.setItem('username', res.data.user.username);
-            localStorage.setItem('role', res.data.user.role);
-            localStorage.setItem('mustChangePassword', res.data.user.mustChangePassword);
-            window.location.href = '/admin';
+  errorMessage: string = '';
+
+submit() {
+  if (this.form.valid) {
+    this.loading = true;
+    this.errorMessage = '';
+
+    this.service.login(this.form.value).subscribe(
+      (res: any) => {
+        this.loading = false;
+
+        if (res.success) {
+          localStorage.setItem('token', res.data.accessToken);
+          localStorage.setItem('userIdentityId', res.data.user.id);
+          localStorage.setItem('username', res.data.user.username);
+          localStorage.setItem('userRole', res.data.user.role);
+          localStorage.setItem('mustChangePassword', res.data.user.mustChangePassword);
+          if(res.data.user.role === 'ADMIN') {
+             window.location.href = '/admin';
+          } else {
+            window.location.href = '/user';
           }
-        },
-        (err) => (this.loading = false)
-      );
-    } else {
-      this.form.markAllAsTouched();
-    }
+        } else {
+          this.loading = false;
+          this.errorMessage = res.message || 'Login failed';
+          this.alert.showAlert(this.errorMessage,"bg-danger");
+          this.loading = false;
+
+        }
+      },
+      (err: any) => {
+        this.loading = false;
+        this.errorMessage =
+          err?.error?.message || err?.message || 'Something went wrong';
+          this.alert.showAlert(this.errorMessage,"bg-danger");
+          this.loading = false;
+
+      }
+    );
+  } else {
+    this.form.markAllAsTouched();
   }
+}
+
 
   get f() {
     return this.form.controls;

@@ -44,13 +44,13 @@
                         formControlName="isAdmin">
                       <label class="fs-13 bold" for="isAdmin">{{ 'is_admin' | translate }} </label>
                     </div>
-          <!-- <p class="fs-13 pointer bold primary" routerLink="/auth/forgot-password">{{ "forgot_password" | translate
+          <!-- <p class="fs-13 pointer bold primary" routerLink="/auth/change-password">{{ "change_password" | translate
             }}</p> -->
         </div>
 
         <!-- Submit Button -->
-        <button class="clickable-btn bg-primary py-1 w-100 rounded bold fs-18" [disabled]="loading" (click)="submit()">
-          <submit-button [text]="'login'" [loading]="loading" />
+        <button class="clickable-btn bg-primary py-1 w-100 rounded bold fs-18" [disabled]="loading  " (click)="submit()">
+          <submit-button [text]="'login'" [loading]="loading || errorMessage !=''" />
         </button>
 
         <!-- <div class="mt-1 text-center">

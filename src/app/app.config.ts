@@ -5,7 +5,8 @@ import {
 } from '@angular/core';
 
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { provideHttpClient, HttpClient,   HTTP_INTERCEPTORS,
+  HttpClientModule, } from '@angular/common/http';
 
 import {
   TranslateLoader,
@@ -40,13 +41,15 @@ export const appConfig: ApplicationConfig = {
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
-          
+
           useFactory: createTranslateLoader,
           deps: [HttpClient]
         },
         defaultLanguage: 'en'
       })
-    )
+    ),
+          HttpClientModule,
+
 
   ]
 };

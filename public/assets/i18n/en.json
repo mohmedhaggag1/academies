@@ -62,8 +62,12 @@
   "send_to_all": "Send To All",
   "selected_academies": "Selected Academies",
   "send" : "Send",
-  "drag_drop_or_click_to_upload" : "اسحب وأفلت أو انقر للتحميل",
-  "upload_invoice_image": "تحميل صورة الفاتورة",
+   "drag_drop_or_click_to_upload" : "Drag & Drop or Click to Upload",
+  "upload_invoice_image" : "Upload Invoice Image",
   "other": "Others",
-  "is_admin" : "login as Admin"
+  "is_admin" : "login as Admin",
+  "current_password": "Current Password",
+  "new_password": "New Password",
+  "password_updated": "Password has been updated successfully",
+  "change_password": "Change Password"
 }

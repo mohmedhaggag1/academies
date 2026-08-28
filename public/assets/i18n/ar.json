@@ -62,8 +62,12 @@
   "send_to_all" : "إرسال للمحددة",
   "selected_academies" : "الأكاديميات المحددة",
   "send" : "إرســـــال",
-  "drag_drop_or_click_to_upload" : "Drag & Drop or Click to Upload",
-  "upload_invoice_image" : "Upload Invoice Image",
+   "drag_drop_or_click_to_upload" : "اسحب وأفلت أو انقر للتحميل",
+  "upload_invoice_image": "تحميل صورة الفاتورة",
   "other": "آخرين",
-  "is_admin": "تسجيل الدخول كمسؤل"
+  "is_admin": "تسجيل الدخول كمسؤل",
+  "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "password_updated": "تم تغيير كلمة المرو بنجاح.",
+    "change_password": "تغيير كلمة المرور"
 }

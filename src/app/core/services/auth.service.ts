@@ -23,9 +23,11 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}Auth/RegisterAdminByCompanyIdAsync`, data);
   }
 
-  login(data: any) {
-    return this.http.post(`${environment.apiUrl}auth/admin/login`, data);
+ login(data: any) {
+  const endpoint = data.isAdmin? 'auth/admin/login' : 'auth/academy/login';
+  return this.http.post(`${environment.apiUrl}${endpoint}`, data);
   }
+
 
   logout() {
     let dialogRef = this.dialog.open(ConfirmationMessageComponent, {
@@ -53,7 +55,7 @@ export class AuthService {
   }
 
   changePassword(data: any) {
-    return this.http.post(`${environment.apiUrl}Auth/ChangePassword`, data);
+    return this.http.post(`${environment.apiUrl}auth/change-password`, data);
   }
 
   sendEmail(data: any) {
