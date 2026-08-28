@@ -69,5 +69,9 @@
   "current_password": "Current Password",
   "new_password": "New Password",
   "password_updated": "Password has been updated successfully",
-  "change_password": "Change Password"
+  "change_password": "Change Password",
+  "logout_message": "Are you sure you want to logout?",
+  "logout": "Logout",
+  "language": "Language",
+  "confirm": "Confirm"
 }

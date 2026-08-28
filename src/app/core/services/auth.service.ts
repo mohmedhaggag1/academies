@@ -12,8 +12,9 @@ import { environment } from '../../../environments/environment.development';
 export class AuthService {
   dialog = inject(MatDialog);
   alert = inject(AlertService);
+  router = inject(Router)
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   register(data: any) {
     return this.http.post(`${environment.apiUrl}Auth/RegisterAsyncAdmin`, data);
@@ -41,15 +42,10 @@ export class AuthService {
 
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        const storedFiles = localStorage.getItem('survey_admin_stored_files');
         let lang = localStorage.getItem('language') || 'en';
         localStorage.clear();
-        if (storedFiles) {
-          localStorage.setItem('survey_admin_stored_files', storedFiles);
-        }
-
         localStorage.setItem('language', lang);
-        this.router.navigate(['auth/login']);
+        this.router.navigate(['/auth']);
       }
     });
   }

@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../services/alert.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../services/auth.service';
 // import { NotificationsListComponent } from './notifications-list.component';
 // import { PushNotificationService } from '../services/push-notification.service';
 // import { GeneralStatisticsService } from '../services/general-statistics.service';
@@ -34,7 +35,7 @@ import { MatDialog } from '@angular/material/dialog';
           </div>
           <div class="user-name-container">
             <p class="user-name">
-              {{ 'haggag' }}
+              {{ userName }}
             </p>
               <div
                 class="w-fit-content flex aic pointer"
@@ -62,7 +63,7 @@ import { MatDialog } from '@angular/material/dialog';
       <div dir="auto">
         <button
           mat-menu-item
-          routerLink="change-password"
+          routerLink="/change-password"
           routerLinkActive="active"
         >
           <div class="flex aic gap-x-2">
@@ -75,7 +76,7 @@ import { MatDialog } from '@angular/material/dialog';
             <p class="bold">{{ 'change_password' | translate }}</p>
           </div>
         </button>
-       
+
         <button mat-menu-item [matMenuTriggerFor]="language">
           <div class="flex aic gap-x-2">
             <img
@@ -165,34 +166,30 @@ import { MatDialog } from '@angular/material/dialog';
     ClipboardModule,
   ]
 })
+
 export class NavbarComponent {
   active: string = '';
   lang: string = '';
-  // authService = inject(AuthService);
-  // profileService = inject(MyProfileService);
+
   alert = inject(AlertService);
   dialog = inject(MatDialog);
-  // notificationsService = inject(PushNotificationService);
-  dir = document.dir;
-  profileUrl: string = '/no-user.jpg';
-  userName: string = '';
-  role = localStorage.getItem('role') || null;
-  companyCode = localStorage.getItem('companyCode') || 'XS41b';
-  daysLeft = 0;
-  // currentPageTitle = inject(CurrentPageService);
-  isAdminDefault: boolean = false;
+  authService = inject(AuthService);
 
-  // Permission properties
-  // offersAlertsPermissions: Permissions = {
-  // canView: false,
-  // canCreate: false,
-  // canEdit: false,
-  // canDelete: false,
-  // canPrint: false,
-  // };
+  dir = document.dir;
+
+  profileUrl: string = '/no-user.jpg';
+
+  userName: string = localStorage.getItem('username') || '--';
+
+  role: string = localStorage.getItem('userRole') || '';
+
+  companyCode: string =
+    localStorage.getItem('userIdentityId') || '--';
+
+  daysLeft = 0;
+  isAdminDefault = false;
 
   constructor(private router: Router) {
-    // Subscribe to router events to update active based on the URL
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.active = event.url;
@@ -202,64 +199,16 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.lang = localStorage.getItem('language') || 'en';
-    // Set initial active value based on the current URL
     this.active = this.router.url;
-
-    // this.profileService.userData$.subscribe((res) => {
-    //   if (res) {
-    //     // localStorage.setItem('SmsProviderId', res.SmsProviderId)
-    //     localStorage.setItem('isSms', res.isSms)
-    //     this.profileUrl = res.path
-    //       ? `${environment.imageUrl}${res.path}`
-    //       : '/no-user.jpg';
-
-    //     this.userName = this.dir === 'ltr' ? res.nameEn : res.nameAr;
-    //   }
-
-    // });
-
-    // if (this.role !== 'SuperAdmin') {
-    //   this.profileService.daysLeft().subscribe((res: any) => {
-    //     this.daysLeft = res.data;
-
-    //   });
-    // }
-
-    // Subscribe to profile data to get module permissions
-    // this.profileService.userData$.subscribe((profile) => {
-    //   if (profile && profile.modulePermissions) {
-    //     this.offersAlertsPermissions = updatePermissions(
-    //       profile.modulePermissions,
-    //       Modules.OFFERSANDALERTS
-    //     );
-    //     this.isAdminDefault = profile.isAdminDefault;
-    //   }
-    // });
-  }
-
-  openNotifications(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    const top = rect.top + window.scrollY + rect.height + 10; // Adjust the top position
-    const left = rect.left + window.scrollX - 150; // Adjust the left position
-    //   this.dialog.open(NotificationsListComponent, {
-    //     autoFocus: false,
-    //     position: { top: `${top}px`, left: `${left}px` },
-    //     panelClass: 'small-dialog',
-    //     data: {},
-    //   });
   }
 
   switchLanguage() {
-    // Get the current language from local storage
     const currentLanguage = localStorage.getItem('language');
 
-    // Toggle between 'ar' and 'eng'
     const newLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
-    // Set the new language in local storage
+
     localStorage.setItem('language', newLanguage);
 
-    // Refresh the page
     window.location.reload();
   }
 
@@ -269,6 +218,6 @@ export class NavbarComponent {
   }
 
   logout() {
-    // this.authService.logout();
+    this.authService.logout();
   }
 }
