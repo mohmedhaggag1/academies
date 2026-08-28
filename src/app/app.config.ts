@@ -4,9 +4,14 @@ import {
   provideBrowserGlobalErrorListeners
 } from '@angular/core';
 
+import {
+  provideHttpClient,
+  withInterceptors,
+  HttpClient
+} from '@angular/common/http';
+
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, HttpClient,   HTTP_INTERCEPTORS,
-  HttpClientModule, } from '@angular/common/http';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 import {
   TranslateLoader,
@@ -16,8 +21,7 @@ import {
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { routes } from './app.routes';
-
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { globalInterceptor } from './core/interceptors/global-interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -27,29 +31,29 @@ export function createTranslateLoader(http: HttpClient) {
   );
 }
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
-
     provideBrowserGlobalErrorListeners(),
 
     provideRouter(routes),
 
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([
+        globalInterceptor
+      ])
+    ),
+
     provideNativeDateAdapter(),
+
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
-
           useFactory: createTranslateLoader,
           deps: [HttpClient]
         },
         defaultLanguage: 'en'
       })
-    ),
-          HttpClientModule,
-
-
+    )
   ]
 };

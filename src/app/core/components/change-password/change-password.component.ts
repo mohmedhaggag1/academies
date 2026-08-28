@@ -37,9 +37,10 @@ export class ChangePasswordComponent {
   confirmPasswordType: string = 'password';
   form: FormGroup;
     isRtl = document.dir === 'rtl';
+
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
-      currectPassword: ['', [Validators.required]],
+      currentPassword: ['', [Validators.required]],
       newPassword: [
         '',
         [
