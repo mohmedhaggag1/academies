@@ -72,17 +72,17 @@ submit() {
           }
         } else {
           this.loading = false;
-          this.errorMessage = res.message || 'Login failed';
-          this.alert.showAlert(this.errorMessage,"bg-danger");
+          // this.errorMessage = res.message || 'Login failed';
+          // this.alert.showAlert(this.errorMessage,"bg-danger");
           this.loading = false;
 
         }
       },
       (err: any) => {
         this.loading = false;
-        this.errorMessage =
-          err?.error?.message || err?.message || 'Something went wrong';
-          this.alert.showAlert(this.errorMessage,"bg-danger");
+        // this.errorMessage =
+        //   err?.error?.message || err?.message || 'Something went wrong';
+        //   this.alert.showAlert(this.errorMessage,"bg-danger");
           this.loading = false;
 
       }
