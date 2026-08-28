@@ -73,5 +73,6 @@
   "logout_message": "Are you sure you want to logout?",
   "logout": "Logout",
   "language": "Language",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "loading": "Loading ...."
 }

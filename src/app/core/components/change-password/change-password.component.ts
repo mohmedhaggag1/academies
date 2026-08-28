@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -14,6 +14,7 @@ import { InputPasswordComponent } from '../../inputs/input-password.component';
 import { AlertService } from '../../services/alert.service';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
+ import { finalize } from 'rxjs';
 
 @Component({
   selector: 'change-password',
@@ -37,7 +38,7 @@ export class ChangePasswordComponent {
   confirmPasswordType: string = 'password';
   form: FormGroup;
     isRtl = document.dir === 'rtl';
-
+private cdr = inject(ChangeDetectorRef); // لتحديث الواجهة فوراً إذا لزم الأمر
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       currentPassword: ['', [Validators.required]],
@@ -66,23 +67,35 @@ export class ChangePasswordComponent {
     };
   }
 
-  submit() {
-    if (this.form.valid) {
-      this.loading = true;
-      this.service.changePassword(this.form.value).subscribe(
-        (res) => {
-          this.alertService.showAlert('password_updated');
+submit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.loading = true;
+
+    this.service.changePassword(this.form.value)
+      .pipe(
+        finalize(() => {
           this.loading = false;
+          this.cdr.markForCheck();
+          console.log('Loading state after finalize:', this.loading);
+        })
+      )
+      .subscribe({
+        next: (res: any) => {
+          if (res && res.success === false) {
+            this.alertService.showAlert(res.message || 'حدث خطأ ما');
+            return;
+          }
+
+          this.alertService.showAlert('password_updated');
           this.form.reset();
         },
-        (err) => {
-          this.loading = false;
-        }
-      );
-    } else {
-      this.form.markAllAsTouched()
-    }
+      });
   }
+
   get f() {
     return this.form.controls;
   }
