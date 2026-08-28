@@ -38,7 +38,7 @@ export class ChangePasswordComponent {
   confirmPasswordType: string = 'password';
   form: FormGroup;
     isRtl = document.dir === 'rtl';
-private cdr = inject(ChangeDetectorRef); // لتحديث الواجهة فوراً إذا لزم الأمر
+private cdr = inject(ChangeDetectorRef);
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       currentPassword: ['', [Validators.required]],

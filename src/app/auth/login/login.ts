@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   FormBuilder,
@@ -39,6 +39,7 @@ export class Login {
   form!: FormGroup;
   passwordType: string = 'password';
   loading = false;
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(private fb: FormBuilder, private router: Router, private dialog: MatDialog) {
     this.form = this.fb.group({
@@ -50,47 +51,42 @@ export class Login {
 
   errorMessage: string = '';
 
-submit() {
-  if (this.form.valid) {
-    this.loading = true;
-    this.errorMessage = '';
+  submit() {
+    if (this.form.valid) {
+      this.loading = true;
+      this.errorMessage = '';
 
-    this.service.login(this.form.value).subscribe(
-      (res: any) => {
-        this.loading = false;
-
-        if (res.success) {
-          localStorage.setItem('token', res.data.accessToken);
-          localStorage.setItem('userIdentityId', res.data.user.id);
-          localStorage.setItem('username', res.data.user.username);
-          localStorage.setItem('userRole', res.data.user.role);
-          localStorage.setItem('mustChangePassword', res.data.user.mustChangePassword);
-          if(res.data.user.role === 'ADMIN') {
-             window.location.href = '/admin';
-          } else {
-            window.location.href = '/user';
-          }
-        } else {
+      this.service.login(this.form.value).subscribe(
+        (res: any) => {
           this.loading = false;
-          // this.errorMessage = res.message || 'Login failed';
-          // this.alert.showAlert(this.errorMessage,"bg-danger");
+
+          if (res.success) {
+            localStorage.setItem('token', res.data.accessToken);
+            localStorage.setItem('userIdentityId', res.data.user.id);
+            localStorage.setItem('username', res.data.user.username);
+            localStorage.setItem('userRole', res.data.user.role);
+            localStorage.setItem('mustChangePassword', res.data.user.mustChangePassword);
+            if (res.data.user.role === 'ADMIN') {
+              window.location.href = '/admin';
+            } else {
+              window.location.href = '/user';
+            }
+          } else {
+            this.cdr.markForCheck();
+            this.loading = false;
+
+          }
+        },
+        (err: any) => {
+          this.cdr.markForCheck();
           this.loading = false;
 
         }
-      },
-      (err: any) => {
-        this.loading = false;
-        // this.errorMessage =
-        //   err?.error?.message || err?.message || 'Something went wrong';
-        //   this.alert.showAlert(this.errorMessage,"bg-danger");
-          this.loading = false;
-
-      }
-    );
-  } else {
-    this.form.markAllAsTouched();
+      );
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
-}
 
 
   get f() {
