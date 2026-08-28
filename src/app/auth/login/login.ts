@@ -49,17 +49,12 @@ export class Login {
     });
   }
 
-  errorMessage: string = '';
-
   submit() {
     if (this.form.valid) {
       this.loading = true;
-      this.errorMessage = '';
-
       this.service.login(this.form.value).subscribe(
         (res: any) => {
           this.loading = false;
-
           if (res.success) {
             localStorage.setItem('token', res.data.accessToken);
             localStorage.setItem('userIdentityId', res.data.user.id);
@@ -74,7 +69,6 @@ export class Login {
           } else {
             this.cdr.markForCheck();
             this.loading = false;
-
           }
         },
         (err: any) => {
@@ -87,7 +81,6 @@ export class Login {
       this.form.markAllAsTouched();
     }
   }
-
 
   get f() {
     return this.form.controls;
