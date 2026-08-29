@@ -5,7 +5,7 @@
         (valueChanged)="search($event)"></search>
     </div>
     <button type="button"
-      class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
+      class="clickable-btn py-1 px-5 rounded bg-primary flex aic gap-x-1"
       (click)="academyIdForm()">
       <span>
         {{ 'add_academy' | translate }}
@@ -45,7 +45,7 @@
 
         @if (AllAcademies.length > 0 && !loading) {
         <tr class="black roundedcpointerc pointer"
-          [routerLink]="['/admin/academies/', academy.id]"
+          [routerLink]="['/admin/academies/', academy._id]"
           *ngFor="
                 let academy of AllAcademies
                   | paginate : {
