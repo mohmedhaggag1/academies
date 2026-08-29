@@ -48,7 +48,7 @@ export class Academies {
     academies$ = this.service.houseUnits$.pipe(
     map((res: any) => {
       this.loading = false;
-      this.AllAcademies = [];
+      this.AllAcademies = res;
       console.log(res)
       // this.rowCount = res;
       return res;
