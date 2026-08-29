@@ -60,10 +60,11 @@ import { AuthService } from '../services/auth.service';
     </div>
 
     <mat-menu #menu="matMenu" class="filter-menu">
-            <div dir="auto">
-        <button
+      
+      <div dir="auto">
+         <button
           mat-menu-item
-          routerLink="/change-password"
+          routerLink="bank-account"
           routerLinkActive="active"
         >
           <div class="flex aic gap-x-2">
@@ -73,35 +74,9 @@ import { AuthService } from '../services/auth.service';
               height="15"
               alt="lock icon"
             />
-            <p class="bold">{{ 'change_password' | translate }}</p>
+            <p class="bold">{{ 'bank_accounts' | translate }}</p>
           </div>
         </button>
-
-        <button mat-menu-item [matMenuTriggerFor]="language">
-          <div class="flex aic gap-x-2">
-            <img
-              src="/icons/language.svg"
-              width="15"
-              height="15"
-              alt="language icon"
-            />
-            <p class="bold">{{ 'language' | translate }}</p>
-          </div>
-        </button>
-        <button mat-menu-item (click)="logout()">
-          <div class="flex aic gap-x-2">
-            <img
-              src="/icons/logout.svg"
-              width="15"
-              height="15"
-              alt="logout icon"
-            />
-            <p class="bold">{{ 'logout' | translate }}</p>
-          </div>
-        </button>
-      </div>
-      
-      <div dir="auto">
         <button
           mat-menu-item
           routerLink="/change-password"

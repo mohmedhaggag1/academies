@@ -88,5 +88,6 @@
   "account_deleted": "Account has been deleted successfully.",
   "intermediary_rate": "Intermediary Rate",
   "market_rate": "Market Rate",
-  "status": "Status"
+  "status": "Status",
+  "bank_accounts": "Bank Accounts"
 }

@@ -88,5 +88,6 @@
   "account_deleted": "تم حذف الحساب بنجاح.",
   "intermediary_rate": "سعر وسيط",
   "market_rate": "سعر السوق",
-  "status": "الحالة"
+  "status": "الحالة",
+  "bank_accounts": "الحسابات البنكية"
 }
