@@ -1,0 +1,90 @@
+<div class="building-form relative">
+  <div class="close img pointer" mat-dialog-close>
+    <img src="/icons/close.svg" alt="close icon" width="25" />
+  </div>
+
+  <div class="text-center" mat-dialog-title>
+    <h1>{{ (data?.accountData ? "edit_account" : "add_account") | translate }}</h1>
+  </div>
+
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <div class="flex-grid">
+
+        <!-- Account Holder Name -->
+        <div class="col-lg-12">
+          <div class="name mb-1">
+            <escoba-input key="holder_name" [control]="f['accountHolderName']">
+              <input type="text" class="input" formControlName="accountHolderName" />
+            </escoba-input>
+          </div>
+        </div>
+
+        <!-- Bank Name -->
+        <div class="col-lg-12">
+          <div class="name mb-1">
+            <escoba-input key="bank_name" [control]="f['bankName']">
+              <input type="text" class="input" formControlName="bankName" />
+            </escoba-input>
+          </div>
+        </div>
+
+        <!-- Account Number -->
+        <div class="col-lg-12">
+          <div class="name mb-1">
+            <escoba-input key="account_number" [control]="f['accountNumber']">
+              <input type="text" class="input" formControlName="accountNumber" />
+            </escoba-input>
+          </div>
+        </div>
+
+        <!-- Currency -->
+        <div class="col-lg-6">
+          <div class="name mb-1">
+            <escoba-input key="currency" [control]="f['currency']">
+              <input type="text" class="input" formControlName="currency" placeholder="e.g. USD" />
+            </escoba-input>
+          </div>
+        </div>
+
+        <!-- Is Active Toggle / Checkbox -->
+        <div class="col-lg-6 flex align-center mb-1">
+          <label class="pointer flex align-center gap-2">
+            <input type="checkbox" formControlName="isActive" />
+            <span>{{ 'is_active' | translate }}</span>
+          </label>
+        </div>
+
+        <!-- Market Rate -->
+        <div class="col-lg-6">
+          <div class="name mb-1">
+            <escoba-input key="market_rate" [control]="f['marketRate']">
+              <input type="number" step="0.01" class="input" formControlName="marketRate" />
+            </escoba-input>
+          </div>
+        </div>
+
+        <!-- Intermediary Rate -->
+        <div class="col-lg-6">
+          <div class="name mb-1">
+            <escoba-input key="intermediary_rate" [control]="f['intermediaryRate']">
+              <input type="number" step="0.01" class="input" formControlName="intermediaryRate" />
+            </escoba-input>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      type="button"
+      class="clickable-btn bg-primary py-50 w-100 rounded bold fs-18 mb-1"
+      [disabled]="form.invalid || form.pristine || loading"
+      (click)="submit()"
+    >
+      <submit-button [loading]="loading" [text]="'save'" />
+    </button>
+  </div>
+</div>
