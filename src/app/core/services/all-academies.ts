@@ -29,31 +29,29 @@ export class AllAcademies {
     // if (this.page.value !== 0) {
     //   url.searchParams.append('Page', String(this.page.value));
     // }
-
     this.search.value && url.searchParams.append('search', this.search.value);
     return this.http.get(`${url}`);
   }
 
 
-  getAcademyById(houseUnitId: any) {
+  getAcademyById(academyId: any) {
     let url = new URL(`${environment.apiUrl}`);
-    return this.http.get(`${url}HousingUnits/GetById ${houseUnitId}`);
+    return this.http.get(`${url}acadeny/${academyId}`);
   }
 
-  addHouseUnit(data: any) {
-    let url = new URL(`${environment.apiUrl}HousingUnits/Add`);
+  addAcademy(data: any) {
+    let url = new URL(`${environment.apiUrl}academy`);
     return this.http.post(`${url}`, data);
   }
 
-  updateHouseUnit(houseUnitId: any, data: any) {
-    let url = new URL(`${environment.apiUrl}HousingUnits/Update`);
-    url.searchParams.append('Id', houseUnitId);
-    return this.http.put(`${url}`, data);
+  updateAcademy(academyId: any, data: any) {
+    let url = new URL(`${environment.apiUrl}academy/${academyId}`);
+    return this.http.patch(`${url}`, data);
   }
 
-  deleteHouseUnit(houseUnitId: any) {
+  deleteAcademy(academyId: any) {
     let url = new URL(
-      `${environment.apiUrl}HousingUnits/Delete/${houseUnitId}`
+      `${environment.apiUrl}acadeny/${academyId}`
     );
     return this.http.delete(`${url}`);
   }

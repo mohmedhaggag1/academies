@@ -64,12 +64,12 @@ export class Academies {
     });
   }
 
-  academyIdForm(academyId?: any) {
+  academyIdForm(academyData?: any) {
     this.dialog.open(AcademyIdFormComponent, {
       autoFocus: false,
       panelClass: 'medium-dialog',
       data: {
-        academyId,
+        academyData
       },
     });
   }
