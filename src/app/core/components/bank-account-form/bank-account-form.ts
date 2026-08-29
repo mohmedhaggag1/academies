@@ -43,10 +43,10 @@ export class BankAccountForm implements OnInit {
   form!: FormGroup;
   loading = false;
 
-  statusOptions = [
-    { value: true, label: 'active' },
-    { value: false, label: 'inactive' },
-  ];
+  // statusOptions = [
+  //   { value: true, label: 'active' },
+  //   { value: false, label: 'inactive' },
+  // ];
 
   private fb = inject(FormBuilder);
   private dialog = inject(MatDialog);
