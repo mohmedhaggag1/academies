@@ -15,7 +15,7 @@
 
 
     <div class="table-data bg-white relative height-without-tabs" magicScroll>
-        @if (!loading) {
+        @if ((academies$ | async) && !loading) {
         <table class="table w-100 rounded bg-white">
             <thead>
                 <tr class="primary">
@@ -44,11 +44,11 @@
 
             <tbody>
 
-                @if (houseUnits.length > 0) {
-                <tr class="black roundedcpointerc pointer" 
-                [routerLink]="['/admin/academies/', houseUnit.id]"
+                @if (AllAcademies.length > 0 && !loading) {
+                <tr class="black roundedcpointerc pointer"
+                [routerLink]="['/admin/academies/', academy.id]"
                 *ngFor="
-                let houseUnit of houseUnits
+                let academy of AllAcademies
                   | paginate : {
                       itemsPerPage: pageSize,
                       currentPage: currentPage
@@ -60,46 +60,35 @@
                         <div class="flex aic mt-75">
 
                             <img src="/icons/copy.svg" alt="copy" width="12" class="clickable pointer"
-                                (click)="copyToClipboard(houseUnit.id)" />
+                                (click)="$event.stopImmediatePropagation(); copyToClipboard(academy.code)" />
 
                             <p class="muted fs-15 ml-50">
-                                {{ houseUnit.id }}
+                                {{ academy.code }}
                             </p>
 
                         </div>
                     </td>
 
-
-
-                    <!-- FLOOR -->
-
                     <td class="text-left">
-
-                        {{ houseUnit.floorName }}
-
+                        {{ academy.name }}
                     </td>
 
                     <td class="text-left">
-
-                        {{ houseUnit.name }}
-
+                        {{ academy.contactPhone }}
                     </td>
 
                     <td class="text-center">
-
-                        {{ 252 }}
-
+                        {{ '-' }}
                     </td>
 
                     <td (click)="$event.stopImmediatePropagation()">
-
                         <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
                     </td>
 
                     <mat-menu #menu="matMenu" class="filter-menu">
                         <div dir="auto">
 
-                            <button mat-menu-item (click)="academyIdForm(houseUnit)">
+                            <button mat-menu-item (click)="academyIdForm(academy)">
                                 <div class="flex aic">
                                     <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
                                     <p class="ml-1">{{ "edit_academy" | translate }}</p>
@@ -118,14 +107,15 @@
 
                 }
 
-                @if (houseUnits.length === 0) {
+                <!-- @if (academys.length === 0) {
                 <tr>
                     <td colspan="4" class="text-center py-3">
                         <not-found />
                     </td>
                 </tr>
-                }
+                } -->
             </tbody>
+      <not-found *ngIf="AllAcademies.length == 0 && !loading" />
 
         </table>
 
@@ -138,7 +128,7 @@
     </div>
 
     @if (
-    houseUnits.length > pageSize && !loading
+    AllAcademies.length > pageSize && !loading
     ) {
 
     <div class="flex-center">
