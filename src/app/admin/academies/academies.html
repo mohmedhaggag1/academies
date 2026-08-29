@@ -1,143 +1,147 @@
 <div class="academied flex-column gap-y-2 h-100 px-5 py-3">
-    <!-- <language></language> -->
-
-    <div class="top-section flex aic gap-x-2">
-        <div class="flex-auto">
-            <search searchPlaceHolder="search" (valueChanged)="search($event)"></search>
-        </div>
-        <button type="button" class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
-            (click)="academyIdForm()">
-            <span>
-                {{ 'add_academy' | translate }}
-            </span>
-        </button>
+  <div class="top-section flex aic gap-x-2">
+    <div class="flex-auto">
+      <search searchPlaceHolder="search"
+        (valueChanged)="search($event)"></search>
     </div>
+    <button type="button"
+      class="clickable-btn py-1 px-3 rounded bg-primary flex aic gap-x-1"
+      (click)="academyIdForm()">
+      <span>
+        {{ 'add_academy' | translate }}
+      </span>
+    </button>
+  </div>
 
+  <div class="table-data bg-white relative height-without-tabs" magicScroll>
+    @if ((academies$ | async) && !loading) {
+    <table class="table w-100 rounded bg-white">
+      <thead>
+        <tr class="primary">
 
-    <div class="table-data bg-white relative height-without-tabs" magicScroll>
-        @if ((academies$ | async) && !loading) {
-        <table class="table w-100 rounded bg-white">
-            <thead>
-                <tr class="primary">
+          <th class="text-left">
+            {{'id' | translate}}
+          </th>
 
-                    <th class="text-left">
-                        {{'id' | translate}}
-                    </th>
+          <th class="text-left">
+            {{ 'academic_name' | translate }}
+          </th>
 
-                    <th class="text-left">
-                        {{ 'academic_name' | translate }}
-                    </th>
+          <th class="text-left">
+            {{ 'mobile_number' | translate }}
+          </th>
 
-                    <th class="text-left">
-                        {{ 'mobile_number' | translate }}
-                    </th>
+          <th class="text-center">
+            {{ 'receipt_number' | translate }}
+          </th>
 
-                    <th class="text-center">
-                        {{ 'receipt_number' | translate }}
-                    </th>
+          <th></th>
 
-                    <th></th>
+        </tr>
 
-                </tr>
+      </thead>
 
-            </thead>
+      <tbody>
 
-            <tbody>
-
-                @if (AllAcademies.length > 0 && !loading) {
-                <tr class="black roundedcpointerc pointer"
-                [routerLink]="['/admin/academies/', academy.id]"
-                *ngFor="
+        @if (AllAcademies.length > 0 && !loading) {
+        <tr class="black roundedcpointerc pointer"
+          [routerLink]="['/admin/academies/', academy.id]"
+          *ngFor="
                 let academy of AllAcademies
                   | paginate : {
                       itemsPerPage: pageSize,
                       currentPage: currentPage
                     };
                 trackBy: trackBy
-              " >
+              ">
 
-                    <td class="text-left px-2">
-                        <div class="flex aic mt-75">
+          <td class="text-left px-2">
+            <div class="flex aic mt-75">
 
-                            <img src="/icons/copy.svg" alt="copy" width="12" class="clickable pointer"
-                                (click)="$event.stopImmediatePropagation(); copyToClipboard(academy.code)" />
+              <img src="/icons/copy.svg" alt="copy" width="12"
+                class="clickable pointer"
+                (click)="$event.stopImmediatePropagation(); copyToClipboard(academy.code)" />
 
-                            <p class="muted fs-15 ml-50">
-                                {{ academy.code }}
-                            </p>
+              <p class="muted fs-15 ml-50">
+                {{ academy.code }}
+              </p>
 
-                        </div>
-                    </td>
+            </div>
+          </td>
 
-                    <td class="text-left">
-                        {{ academy.name }}
-                    </td>
+          <td class="text-left">
+            {{ academy.name }}
+          </td>
 
-                    <td class="text-left">
-                        {{ academy.contactPhone }}
-                    </td>
+          <td class="text-left">
+            {{ academy.contactPhone }}
+          </td>
 
-                    <td class="text-center">
-                        {{ '-' }}
-                    </td>
+          <td class="text-center">
+            {{ '-' }}
+          </td>
 
-                    <td (click)="$event.stopImmediatePropagation()">
-                        <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
-                    </td>
+          <td (click)="$event.stopImmediatePropagation()">
+            <img [matMenuTriggerFor]="menu" class="pointer px-1"
+              src="/icons/menu.svg" alt="menu icon" />
+          </td>
 
-                    <mat-menu #menu="matMenu" class="filter-menu">
-                        <div dir="auto">
+          <mat-menu #menu="matMenu" class="filter-menu">
+            <div dir="auto">
 
-                            <button mat-menu-item (click)="academyIdForm(academy)">
-                                <div class="flex aic">
-                                    <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
-                                    <p class="ml-1">{{ "edit_academy" | translate }}</p>
-                                </div>
-                            </button>
+              <button mat-menu-item (click)="academyIdForm(academy)">
+                <div class="flex aic">
+                  <img src="/icons/edit.svg" width="15" height="15"
+                    alt="edit icon" />
+                  <p class="ml-1">{{ "edit_academy" | translate }}</p>
+                </div>
+              </button>
 
-                            <button mat-menu-item>
-                                <div class="flex aic" (click)="deleteAcademy()">
-                                    <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
-                                    <p class="ml-1">{{ "delete_academy" | translate }}</p>
-                                </div>
-                            </button>
-                        </div>
-                    </mat-menu>
-                </tr>
+              <button mat-menu-item>
+                <div class="flex aic" (click)="deleteAcademy()">
+                  <img src="/icons/delete-danger.svg" width="15" height="15"
+                    alt="delete icon" />
+                  <p class="ml-1">{{ "delete_academy" | translate }}</p>
+                </div>
+              </button>
+            </div>
+          </mat-menu>
+        </tr>
 
-                }
+        }
 
-                <!-- @if (academys.length === 0) {
+        <!-- @if (academys.length === 0) {
                 <tr>
                     <td colspan="4" class="text-center py-3">
                         <not-found />
                     </td>
                 </tr>
                 } -->
-            </tbody>
+      </tbody>
       <not-found *ngIf="AllAcademies.length == 0 && !loading" />
 
-        </table>
-        }
-
-        @if (loading) {
-        <rectangle-skeleton class="w-100 h-100" />
-        }
-
-    </div>
-
-    @if (
-    AllAcademies.length > pageSize && !loading
-    ) {
-
-    <div class="flex-center">
-
-        <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel="" nextLabel=""
-            (pageChange)="pageChanged($event)">
-
-        </pagination-controls>
-
-    </div>
-
+    </table>
     }
+
+    @if (loading) {
+    <rectangle-skeleton class="w-100 h-100" />
+    }
+
+  </div>
+
+  @if (
+  AllAcademies.length > pageSize && !loading
+  ) {
+
+  <div class="flex-center">
+
+    <pagination-controls [maxSize]="maxSize" [directionLinks]="true"
+      previousLabel nextLabel
+      (pageChange)="pageChanged($event)">
+
+    </pagination-controls>
+
+  </div>
+
+  }
 </div>

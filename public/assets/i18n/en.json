@@ -74,5 +74,6 @@
   "logout": "Logout",
   "language": "Language",
   "confirm": "Confirm",
-  "loading": "Loading ...."
+  "loading": "Loading ....",
+  "not_found": "No Data Found"
 }
