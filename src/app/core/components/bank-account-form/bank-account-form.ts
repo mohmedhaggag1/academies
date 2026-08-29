@@ -15,6 +15,7 @@ import {
   MatDialog,
 } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { SubmitButtonComponent } from '../../../core/components/submit-button.component';
 import { EscobaInputComponent } from '../../../core/inputs/escoba-input.component';
 import { AlertService } from '../../../core/services/alert.service';
@@ -35,11 +36,17 @@ import { BankAccountService } from '../../../core/services/bank-account';
     MatDialogActions,
     MatDialogClose,
     SubmitButtonComponent,
+    NgSelectModule,
   ]
 })
 export class BankAccountForm implements OnInit {
   form!: FormGroup;
   loading = false;
+
+  statusOptions = [
+    { value: true, label: 'active' },
+    { value: false, label: 'inactive' },
+  ];
 
   private fb = inject(FormBuilder);
   private dialog = inject(MatDialog);
@@ -59,7 +66,7 @@ export class BankAccountForm implements OnInit {
         currency: this.data.accountData.currency,
         marketRate: this.data.accountData.marketRate,
         intermediaryRate: this.data.accountData.intermediaryRate,
-        isActive: this.data.accountData.isActive ?? true,
+        // isActive: this.data.accountData.isActive ?? true,
       });
     }
   }
@@ -72,7 +79,7 @@ export class BankAccountForm implements OnInit {
       currency: ['USD', Validators.required],
       marketRate: [null, [Validators.required, Validators.min(0)]],
       intermediaryRate: [null, [Validators.required, Validators.min(0)]],
-      isActive: [true],
+      // isActive: [true, Validators.required],
     });
   }
 

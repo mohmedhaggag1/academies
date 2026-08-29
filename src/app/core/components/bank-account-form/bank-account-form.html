@@ -47,13 +47,32 @@
           </div>
         </div>
 
-        <!-- Is Active Toggle / Checkbox -->
-        <div class="col-lg-6 flex align-center mb-1">
-          <label class="pointer flex align-center gap-2">
-            <input type="checkbox" formControlName="isActive" />
-            <span>{{ 'is_active' | translate }}</span>
-          </label>
-        </div>
+        <!-- Status Select (isActive) -->
+        <!-- <div class="col-lg-6">
+          <div class="name mb-1">
+            <escoba-input key="bank_account_status" [control]="f['isActive']">
+              <ng-select
+                class="flex-grow select-with-icon pointer"
+                appendTo="body"
+                [multiple]="false"
+                [clearable]="false"
+                [items]="statusOptions"
+                bindValue="value"
+                bindLabel="label"
+                formControlName="isActive"
+                [placeholder]="'bank_account_status' | translate"
+                [searchable]="false"
+              >
+                <ng-template ng-label-tmp let-item="item">
+                  {{ item.label | translate }}
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item">
+                  {{ item.label | translate }}
+                </ng-template>
+              </ng-select>
+            </escoba-input>
+          </div>
+        </div> -->
 
         <!-- Market Rate -->
         <div class="col-lg-6">
@@ -81,7 +100,7 @@
     <button
       type="button"
       class="clickable-btn bg-primary py-50 w-100 rounded bold fs-18 mb-1"
-      [disabled]="form.invalid || form.pristine || loading"
+      [disabled]="form.invalid || loading"
       (click)="submit()"
     >
       <submit-button [loading]="loading" [text]="'save'" />
