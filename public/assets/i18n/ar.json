@@ -75,5 +75,18 @@
   "language": "اللغة",
   "confirm": "تأكيد",
   "loading": "جاري التحميل ....",
-  "not_found": "لايوجد بيانات"
+  "not_found": "لايوجد بيانات",
+   "bank_name": "اسم البنك ",
+  "account_number": "رقم الحساب",
+  "holder_name": "اسم صاحب الحساب",
+  "add_account": "إضافة حساب",
+  "account_added": "تمت إضافة الحساب بنجاح.",
+  "account_copied": "تم نسخ رقم الحساب بنجاح.",
+  "edit_account": "تعديل الحساب",
+  "account_edited": "تم تحديث الحساب بنجاح.",
+  "delete_account": "حذف الحساب",
+  "account_deleted": "تم حذف الحساب بنجاح.",
+  "intermediary_rate": "سعر وسيط",
+  "market_rate": "سعر السوق",
+  "status": "الحالة"
 }

@@ -75,5 +75,18 @@
   "language": "Language",
   "confirm": "Confirm",
   "loading": "Loading ....",
-  "not_found": "No Data Found"
+  "not_found": "No Data Found",
+  "bank_name": "Bank Name",
+  "account_number": "Account Number",
+  "holder_name": "Holder Name",
+ "add_account": "Add Account",
+  "account_added": "Account has been added successfully.",
+  "account_copied": "Account number has been copied successfully.",
+  "edit_account": "Edit Account",
+  "account_edited": "Account has been updated successfully.",
+  "delete_account": "Delete Account",
+  "account_deleted": "Account has been deleted successfully.",
+  "intermediary_rate": "Intermediary Rate",
+  "market_rate": "Market Rate",
+  "status": "Status"
 }
