@@ -1,0 +1,176 @@
+<div class="mt-1">
+    <navbar></navbar>
+
+</div>
+<div class="floors flex-column gap-y-2 h-100 pt-4 px-5">
+
+    <div class="flex-grid gap-x-2 gap-y-2">
+        <div class="col-lg-2">
+            <country-receipt-filter />
+        </div>
+
+        <div class="col-lg-2">
+            <payment-status />
+        </div>
+
+        <div class="col-lg-2">
+            <bank-account-status-filter />
+        </div>
+
+        <div class="col-lg-2">
+            <date-range-filter (dateRangeChange)="onDateRangeChange($event)" />
+        </div>
+
+    </div>
+
+    <div class="table-data bg-white relative height-with-tabs" magicScroll>
+        @if (!loading) {
+
+        <table class="table w-100 rounded bg-white">
+
+            <thead class="border-bottom">
+
+                <tr class="primary">
+
+                    <!-- STATUS -->
+
+                    <th class="text-center">
+
+                        {{ 'transfer_status' | translate }}
+
+                    </th>
+
+
+                    <!-- ACCOUNT -->
+
+                    <th class="text-center">
+
+                        {{ 'account' | translate }}
+
+                    </th>
+
+
+                    <!-- RECEIPT -->
+
+                    <th class="text-center">
+
+                        {{ 'transfer_receipt' | translate }}
+
+                    </th>
+                    <th class="text-center">
+                        {{ 'payment_method' | translate }}
+                    </th>
+
+                    <th class="text-center">
+                        {{ 'exchange_rate' | translate }}
+                    </th>
+
+                    <th class="text-center">
+                        {{ 'total_egp' | translate }}
+                    </th>
+
+                    <th class="text-center">
+                        {{ 'date' | translate }}
+                    </th>
+
+                    <th class="text-center">
+                        {{ 'transfer_img' | translate }}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (houseUnits.length > 0) {
+
+                <tr class="black rounded" *ngFor="
+                                let academy of houseUnits
+                                | paginate : {
+                                    itemsPerPage: pageSize,
+                                    currentPage: currentPage
+                                };
+                                trackBy: trackBy
+                            ">
+
+                    <td class="text-center" (click)="$event.stopPropagation()">
+                        <transfer-status [academy]="academy" />
+                    </td>
+
+                    <td class="text-center" (click)="$event.stopPropagation()">
+                        {{ academy.accountStatus | translate }}
+                    </td>
+
+                    <td class="text-center">
+                        <span>
+                            {{ academy.receiptNumber }}
+                        </span>
+
+                    </td>
+
+                    <td class="text-center">
+                        <span>
+                            {{ academy.paymentMethod }}
+                        </span>
+
+                    </td>
+
+                    <td class="text-center">
+                        <span>
+                            {{ academy.exchangeRate }}
+                        </span>
+
+                    </td>
+
+                    <td class="text-center">
+                        <span class="fw-bold">
+                            EGP
+                            {{ academy.totalEgp | number:'1.2-2' }}
+                        </span>
+                    </td>
+
+                    <td class="text-center">
+                        <span>
+                            {{ academy.date | date:'yyyy-MM-dd' }}
+
+                        </span>
+                    </td>
+
+                    <td class="text-center">
+                        <a [href]="academy.invoiceUrl" target="_blank" class="clickable">
+                            {{ 'view_invoice' | translate }}
+                        </a>
+                    </td>
+
+                </tr>
+                }
+
+                @if (houseUnits.length === 0) {
+                <tr>
+                    <td colspan="11" class="text-center py-3">
+                        <not-found />
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        }
+
+        @if (loading) {
+        <rectangle-skeleton class="w-100 h-100" />
+        }
+
+    </div>
+
+    @if (
+    houseUnits.length > pageSize &&
+    !loading
+    ) {
+
+    <div class="flex-center">
+        <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel="" nextLabel=""
+            (pageChange)="pageChanged($event)">
+        </pagination-controls>
+    </div>
+    }
+
+</div>

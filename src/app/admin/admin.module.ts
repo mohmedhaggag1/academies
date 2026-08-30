@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { RouterOutlet } from '@angular/router';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, AdminRoutingModule,RouterOutlet],
+  imports: [CommonModule, AdminRoutingModule],
 })
 export class AdminModule {}

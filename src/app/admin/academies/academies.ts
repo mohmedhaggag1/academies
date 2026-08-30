@@ -25,7 +25,6 @@ import { Subject, debounceTime, map } from 'rxjs';
     RectangleSkeletonComponent,
     MagicScrollDirective,
     MatMenuModule,
-    // LanguageComponent,
     NotFoundComponent,
     RouterModule
   ],

@@ -3,20 +3,12 @@ import { LogoComponent } from './logo.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-// import { AuthService } from '../services/auth.service';
-// import { MyProfileService } from '../services/my-profile.service';
-// import { environment } from '../../../environments/environment.development';
 import { TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../services/alert.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
-// import { NotificationsListComponent } from './notifications-list.component';
-// import { PushNotificationService } from '../services/push-notification.service';
-// import { GeneralStatisticsService } from '../services/general-statistics.service';
-// import { CurrentPageService } from '../services/current-page.service';
-// import { updatePermissions } from '../utils/permissions';
-// import { Modules, Permissions } from '../interfaces/module-permission';
+import { AuthGuargService } from '../services/authGuard.service';
 
 @Component({
   selector: 'navbar',
@@ -62,6 +54,7 @@ import { AuthService } from '../services/auth.service';
     <mat-menu #menu="matMenu" class="filter-menu">
       
       <div dir="auto">
+      @if (authGuard.isAdmin()) {
          <button
           mat-menu-item
           routerLink="bank-account"
@@ -77,6 +70,7 @@ import { AuthService } from '../services/auth.service';
             <p class="bold">{{ 'bank_accounts' | translate }}</p>
           </div>
         </button>
+      }
         <button
           mat-menu-item
           routerLink="/change-password"
@@ -190,6 +184,7 @@ export class NavbarComponent {
   alert = inject(AlertService);
   dialog = inject(MatDialog);
   authService = inject(AuthService);
+  authGuard = inject(AuthGuargService)
 
   dir = document.dir;
 

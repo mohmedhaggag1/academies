@@ -43,4 +43,7 @@ export class AuthService {
   changePassword(data: any) {
     return this.http.patch(`${environment.apiUrl}auth/change-password`, data);
   }
+
+
+  
 }
