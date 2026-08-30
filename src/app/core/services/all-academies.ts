@@ -51,8 +51,18 @@ export class AllAcademies {
 
   deleteAcademy(academyId: any) {
     let url = new URL(
-      `${environment.apiUrl}acadeny/${academyId}`
+      `${environment.apiUrl}academy/${academyId}`
     );
     return this.http.delete(`${url}`);
+  }
+  
+    disabledAcademy(academyId: any) {
+    let url = new URL(`${environment.apiUrl}academy/${academyId}/disable`);
+    return this.http.patch(`${url}`, null);
+  }
+
+  activateAcademy(academyId: any) {
+    let url = new URL(`${environment.apiUrl}academy/${academyId}/activate`);
+    return this.http.patch(`${url}`, null);
   }
 }

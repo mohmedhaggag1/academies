@@ -122,6 +122,55 @@ export class Academies {
     this.searchSubject.next(value);
   }
 
+
+  
+  activateAcademy(academyId: any) {
+    const dialogRef = this.dialog.open(ConfirmationMessageComponent, {
+      panelClass: 'small-dialog',
+      data: {
+        btn_name: 'confirm',
+        message: 'activate_the_account',
+        classes: 'bg-primary',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.service.activateAcademy(academyId).subscribe((_res: any) => {
+          if (_res.success) {
+            this.alert.showAlert('account_activated');
+            this.dialog.closeAll();
+            this.service.hasChanged.next(true);
+          }
+        });
+      }
+    });
+  }
+
+  deactivateAcademyt(academyId: any) {
+    const dialogRef = this.dialog.open(ConfirmationMessageComponent, {
+      panelClass: 'small-dialog',
+      data: {
+        btn_name: 'confirm',
+        message: 'deactivate_the_account',
+        classes: 'bg-danger',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.service.disabledAcademy(academyId).subscribe((_res: any) => {
+          if (_res.success) {
+            this.alert.showAlert('account_deactivated');
+            this.dialog.closeAll();
+            this.service.hasChanged.next(true);
+          }
+        });
+      }
+    });
+  }
+
+
   ngOnDestroy(): void {
     this.searchSubject.next('');
     this.service.page.next(0);
