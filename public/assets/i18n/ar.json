@@ -1,6 +1,7 @@
 {
   "add_academy": "إضافة أكادمية",
-  "search": "بحــــت بالكود , الاسم",
+  "search": "بحــــت",
+  "search_code_name": "بحــــت بالكود , الاسم",
   "academic_name": "اسم الأكادمية",
   "id": "الكود",
   "edit_academy": "تعديل ",
@@ -76,7 +77,7 @@
   "confirm": "تأكيد",
   "loading": "جاري التحميل ....",
   "not_found": "لايوجد بيانات",
-   "bank_name": "اسم البنك ",
+  "bank_name": "اسم البنك ",
   "account_number": "رقم الحساب",
   "holder_name": "اسم صاحب الحساب",
   "add_account": "إضافة حساب",
@@ -89,5 +90,11 @@
   "intermediary_rate": "سعر وسيط",
   "market_rate": "سعر السوق",
   "status": "الحالة",
-  "bank_accounts": "الحسابات البنكية"
+  "bank_accounts": "الحسابات البنكية",
+  "activate_account": "تفعيل الحساب",
+  "deactivate_account": "تعطيل الحساب",
+  "account_activated": "تم تفعيل الحساب بنجاح",
+  "account_deactivated": "تم تعطيل الحساب بنجاح",
+  "activate_the_account": "هل أنت متأكد من رغبتك في تفعيل هذا الحساب؟",
+  "deactivate_the_account": "هل أنت متأكد من رغبتك في تعطيل هذا الحساب؟"
 }

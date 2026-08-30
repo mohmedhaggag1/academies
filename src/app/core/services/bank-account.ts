@@ -49,14 +49,14 @@ export class BankAccountService {
     return this.http.patch(`${url}`, data);
   }
 
-   disabledBankAccount(BankAccountId: any, data: any) {
+   disabledBankAccount(BankAccountId: any) {
     let url = new URL(`${environment.apiUrl}bank-accounts/${BankAccountId}/disable`);
-    return this.http.patch(`${url}`, data);
+    return this.http.patch(`${url}`, null);
   }
 
-   activateBankAccount(BankAccountId: any, data: any) {
+   activateBankAccount(BankAccountId: any) {
     let url = new URL(`${environment.apiUrl}bank-accounts/${BankAccountId}/activate`);
-    return this.http.patch(`${url}`, data);
+    return this.http.patch(`${url}`, null);
   }
 
   deleteBankAccount(BankAccountId: any) {
@@ -65,4 +65,5 @@ export class BankAccountService {
     );
     return this.http.delete(`${url}`);
   }
+  
 }

@@ -1,4 +1,3 @@
-import { AllAcademies } from './../../core/services/all-academies';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
@@ -10,7 +9,6 @@ import { SearchComponent } from '../../core/components/search.component';
 import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
 import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
 import { MatDialog } from '@angular/material/dialog';
-import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
 import { AlertService } from '../../core/services/alert.service';
 import { RouterModule } from '@angular/router';
 import { Subject, debounceTime, map } from 'rxjs';
@@ -46,7 +44,7 @@ export class BankAccount {
   service = inject(BankAccountService);
   private searchSubject: Subject<string> = new Subject<string>();
 
-    accounts$ = this.service.accounts$.pipe(
+  accounts$ = this.service.accounts$.pipe(
     map((res: any) => {
       this.loading = false;
       this.allData = res;
@@ -97,17 +95,61 @@ export class BankAccount {
         // });
       }
     });
-
-
   }
 
 
+
+  activateAccount(accountId: any) {
+    const dialogRef = this.dialog.open(ConfirmationMessageComponent, {
+      panelClass: 'small-dialog',
+      data: {
+        btn_name: 'confirm',
+        message: 'activate_the_account',
+        classes: 'bg-primary',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.service.activateBankAccount(accountId).subscribe((_res: any) => {
+          if (_res.success) {
+            this.alert.showAlert('account_activated');
+            this.dialog.closeAll();
+            this.service.hasChanged.next(true);
+          }
+        });
+      }
+    });
+  }
+
+  deactivateAccount(accountId: any) {
+    const dialogRef = this.dialog.open(ConfirmationMessageComponent, {
+      panelClass: 'small-dialog',
+      data: {
+        btn_name: 'confirm',
+        message: 'deactivate_the_account',
+        classes: 'bg-danger',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.service.disabledBankAccount(accountId).subscribe((_res: any) => {
+          if (_res.success) {
+            this.alert.showAlert('account_deactivated');
+            this.dialog.closeAll();
+            this.service.hasChanged.next(true);
+          }
+        });
+      }
+    });
+  }
 
   copyToClipboard(text: any) {
     navigator.clipboard.writeText(text);
     this.alert.showAlert('academy_id_copied', 'bg-success');
-
   }
+
   trackBy(index: number, item: any) {
     return item.id;
   }
@@ -119,9 +161,11 @@ export class BankAccount {
     this.service.hasChanged.next(true);
   }
 
+
   search(value: any) {
     this.loading = true;
     this.searchSubject.next(value);
+    this.service.hasChanged.next(true);
   }
 
   ngOnDestroy(): void {

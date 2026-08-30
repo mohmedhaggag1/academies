@@ -1,12 +1,9 @@
 <div class="academied flex-column gap-y-2 h-100 px-5 py-3">
   <div class="top-section flex aic gap-x-2">
     <div class="flex-auto">
-      <search searchPlaceHolder="search"
-        (valueChanged)="search($event)"></search>
+      <search searchPlaceHolder="search" (valueChanged)="search($event)"></search>
     </div>
-    <button type="button"
-      class="clickable-btn py-1 px-5 rounded bg-primary flex aic gap-x-1"
-      (click)="accountdForm()">
+    <button type="button" class="clickable-btn py-1 px-5 rounded bg-primary flex aic gap-x-1" (click)="accountdForm()">
       <span>
         {{ 'add_account' | translate }}
       </span>
@@ -16,7 +13,7 @@
   <div class="table-data bg-white relative height-without-tabs" magicScroll>
     @if ((accounts$ | async) && !loading) {
     <table class="table w-100 rounded bg-white">
-      <thead>
+      <thead class="border-bottom">
         <tr class="primary">
 
           <th class="text-left">
@@ -50,11 +47,9 @@
       </thead>
 
       <tbody>
-<!-- [routerLink]="['/admin/academies/', account._id]" -->
+        <!-- [routerLink]="['/admin/academies/', account._id]" -->
         @if (allData.length > 0 && !loading) {
-        <tr class="black roundedcpointerc pointer"
-
-          *ngFor="
+        <tr class="black roundedcpointerc" *ngFor="
                 let account of allData
                   | paginate : {
                       itemsPerPage: pageSize,
@@ -68,13 +63,12 @@
           </td>
 
           <td class="text-left px-2">
-            <div class="flex aic mt-75">
+            <div class="flex aic mt-75 account-number">
 
-              <img src="/icons/copy.svg" alt="copy" width="12"
-                class="clickable pointer"
+              <img src="/icons/copy.svg" alt="copy" width="12" class="clickable pointer"
                 (click)="$event.stopImmediatePropagation(); copyToClipboard(account.accountNumber)" />
 
-              <p class="muted fs-15 ml-50">
+              <p class="fs-15 ml-50">
                 {{ account.accountNumber }}
               </p>
 
@@ -88,29 +82,45 @@
 
           <td class="text-center">{{account.intermediaryRate}}</td>
           <td class="text-center">{{account.marketRate}}</td>
-            <td class="text-center"> {{ account.currency }} </td>
-          <td class="text-center">{{(account.isActive ? 'active' : 'inactive') | translate}}</td>
+          <td class="text-center"> {{ account.currency }} </td>
+          <td class="text-center"  [ngClass]="account.isActive ? 'green' : 'danger'">
+            {{(account.isActive ? 'active' : 'inactive') | translate}}
+          </td>
 
           <td (click)="$event.stopImmediatePropagation()">
-            <img [matMenuTriggerFor]="menu" class="pointer px-1"
-              src="/icons/menu.svg" alt="menu icon" />
+            <img [matMenuTriggerFor]="menu" class="pointer px-1" src="/icons/menu.svg" alt="menu icon" />
           </td>
 
           <mat-menu #menu="matMenu" class="filter-menu">
             <div dir="auto">
+              @if(!account.isActive){
+              <button mat-menu-item (click)="activateAccount(account.id)">
+                <div class="flex aic">
+                  <img src="/icons/activate.svg" width="15" height="15" alt="delete icon" />
+                  <p class="ml-1">{{ "activate_account" | translate }}</p>
+                </div>
+              </button>
+              }
+
+              @if(account.isActive){
+              <button mat-menu-item (click)="deactivateAccount(account.id)">
+                <div class="flex aic">
+                  <img src="/icons/deactivate.svg" width="15" height="15" alt="delete icon" />
+                  <p class="ml-1">{{ "deactivate_account" | translate }}</p>
+                </div>
+              </button>
+              }
 
               <button mat-menu-item (click)="accountdForm(account)">
                 <div class="flex aic">
-                  <img src="/icons/edit.svg" width="15" height="15"
-                    alt="edit icon" />
+                  <img src="/icons/edit.svg" width="15" height="15" alt="edit icon" />
                   <p class="ml-1">{{ "edit_academy" | translate }}</p>
                 </div>
               </button>
 
               <button mat-menu-item>
                 <div class="flex aic" (click)="deleteAccount()">
-                  <img src="/icons/delete-danger.svg" width="15" height="15"
-                    alt="delete icon" />
+                  <img src="/icons/delete-danger.svg" width="15" height="15" alt="delete icon" />
                   <p class="ml-1">{{ "delete_academy" | translate }}</p>
                 </div>
               </button>
@@ -137,8 +147,7 @@
 
   <div class="flex-center">
 
-    <pagination-controls [maxSize]="maxSize" [directionLinks]="true"
-      previousLabel nextLabel
+    <pagination-controls [maxSize]="maxSize" [directionLinks]="true" previousLabel nextLabel
       (pageChange)="pageChanged($event)">
 
     </pagination-controls>
