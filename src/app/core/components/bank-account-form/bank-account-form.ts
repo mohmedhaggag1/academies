@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -42,11 +42,7 @@ import { BankAccountService } from '../../../core/services/bank-account';
 export class BankAccountForm implements OnInit {
   form!: FormGroup;
   loading = false;
-
-  // statusOptions = [
-  //   { value: true, label: 'active' },
-  //   { value: false, label: 'inactive' },
-  // ];
+  private cdr = inject(ChangeDetectorRef);
 
   private fb = inject(FormBuilder);
   private dialog = inject(MatDialog);
@@ -100,6 +96,7 @@ export class BankAccountForm implements OnInit {
     request$.subscribe({
       next: (res: any) => {
         this.loading = false;
+        this.cdr.markForCheck();
         if (res?.success) {
           this.alert.showAlert(isEdit ? 'account_updated' : 'account_added');
           this.service.hasChanged.next(true);
@@ -107,6 +104,8 @@ export class BankAccountForm implements OnInit {
         }
       },
       error: () => {
+        this.cdr.markForCheck();
+
         this.loading = false;
       }
     });
