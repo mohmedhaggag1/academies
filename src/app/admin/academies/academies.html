@@ -81,15 +81,15 @@
           <td class="text-center">
             {{ '-' }}
           </td>
-
+          
+          <td class="text-center" [ngClass]="academy.isActive ? 'green' : 'danger'">
+           {{(academy.isActive ? 'active' : 'inactive') | translate}}
+         </td>
           <td (click)="$event.stopImmediatePropagation()">
             <img [matMenuTriggerFor]="menu" class="pointer px-1"
               src="/icons/menu.svg" alt="menu icon" />
           </td>
 
-           <td class="text-center" [ngClass]="academy.isActive ? 'green' : 'danger'">
-            {{(academy.isActive ? 'active' : 'inactive') | translate}}
-          </td>
 
           <mat-menu #menu="matMenu" class="filter-menu">
             <div dir="auto">

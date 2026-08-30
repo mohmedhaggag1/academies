@@ -9,7 +9,7 @@ import { LogoComponent } from './logo.component';
     <div class="flex h-100 pl-5 bg-color">
       <div class="w-80 h-100 relative">
         <div class="logo">
-          <logo></logo>
+          <logo [width]="150"></logo>
         </div>
         <div class="desc flex-column gap-y-4">
           <div class="fs-3">
