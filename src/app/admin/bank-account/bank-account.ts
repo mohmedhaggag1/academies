@@ -1,39 +1,38 @@
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { NotFoundComponent } from '../../core/components/not-found.component';
-import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
-import { SearchComponent } from '../../core/components/search.component';
-import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
-import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
-import { MatDialog } from '@angular/material/dialog';
-import { AlertService } from '../../core/services/alert.service';
-import { RouterModule } from '@angular/router';
 import { Subject, debounceTime, map } from 'rxjs';
-import { BankAccountService } from '../../core/services/bank-account';
-import { BankAccountForm } from '../../core/components/bank-account-form/bank-account-form';
-import { EscobaInputComponent } from "../../core/inputs/escoba-input.component";
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { AlertService } from '../../core/services/alert.service';
+import { BankAccountService } from '../../core/services/bank-account';
+import { SearchComponent } from '../../core/components/search.component';
+import { NotFoundComponent } from '../../core/components/not-found.component';
+import { EscobaInputComponent } from "../../core/inputs/escoba-input.component";
+import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
+import { BankAccountForm } from '../../core/components/bank-account-form/bank-account-form';
+import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
+import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
 
 @Component({
   selector: 'bank-account',
   imports: [
+    FormsModule,
     CommonModule,
-    TranslateModule,
-    NgxPaginationModule,
-    SearchComponent,
-    RectangleSkeletonComponent,
-    MagicScrollDirective,
-    MatMenuModule,
-    NotFoundComponent,
     RouterModule,
-    EscobaInputComponent,
+    MatMenuModule,
     NgSelectModule,
-    FormsModule
-
+    SearchComponent,
+    TranslateModule,
+    NotFoundComponent,
+    NgxPaginationModule,
+    MagicScrollDirective,
+    EscobaInputComponent,
+    RectangleSkeletonComponent,
   ],
   templateUrl: './bank-account.html',
   styleUrl: './bank-account.scss',
@@ -45,10 +44,10 @@ export class BankAccount {
   pageSize = 15;
   maxSize = 7;
 
-  alert = inject(AlertService)
-  dialog = inject(MatDialog);
   allData: any[] = [];
   selectedStatus = 'all'
+  dialog = inject(MatDialog);
+  alert = inject(AlertService)
   service = inject(BankAccountService);
 
   statusOptions = [
@@ -92,7 +91,6 @@ export class BankAccount {
     this.service.hasChanged.next(true);
   }
 
-
   accountdForm(accountData?: any) {
     this.dialog.open(BankAccountForm, {
       autoFocus: false,
@@ -102,7 +100,6 @@ export class BankAccount {
       },
     });
   }
-
 
   deleteAccount() {
     let dialogRef = this.dialog.open(ConfirmationMessageComponent, {
@@ -188,7 +185,6 @@ export class BankAccount {
     this.service.page.next(event);
     this.service.hasChanged.next(true);
   }
-
 
   search(value: any) {
     this.loading = true;
