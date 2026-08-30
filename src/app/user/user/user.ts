@@ -7,17 +7,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { NotFoundComponent } from '../../core/components/not-found.component';
 import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
-import { SearchComponent } from '../../core/components/search.component';
 import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
-import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
-import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
-import { PriorityComponent } from '../../core/components/priority.component';
-
 import { MatDialog } from '@angular/material/dialog';
 import { AlertService } from '../../core/services/alert.service';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { AccountStatusSelect } from "../../core/components/maintenance-status-select/maintenance-status-select.component";
-import { AccountStatus } from "../../core/components/account-status/account-status";
 import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
 import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
 import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
@@ -39,7 +32,6 @@ import { NavbarComponent } from "../../core/components/navbar.component";
     MatMenuModule,
     MatCheckboxModule,
     NotFoundComponent,
-    AccountStatus,
     CountryReceiptFilterComponent,
     PaymentStatusComponent,
     BankAccountStatusFilter,
