@@ -64,6 +64,7 @@ export class Login {
             if (res.data.user.role === 'ADMIN') {
               window.location.href = '/admin';
             } else {
+              localStorage.setItem('academyId', res.data.user.academyId);
               window.location.href = '/user';
             }
           } else {

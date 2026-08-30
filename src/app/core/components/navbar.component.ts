@@ -29,6 +29,7 @@ import { AuthGuargService } from '../services/authGuard.service';
             <p class="user-name">
               {{ userName }}
             </p>
+  @if (authGuard.isUser()) {
               <div
                 class="w-fit-content flex aic pointer"
                 [cdkCopyToClipboard]="companyCode"
@@ -43,6 +44,7 @@ import { AuthGuargService } from '../services/authGuard.service';
                   {{ companyCode || '--' }}
                 </p>
               </div>
+  }
           </div>
           <div class="px-1 pointer" [matMenuTriggerFor]="menu">
             <i class="bx bx-chevron-down"></i>
@@ -195,7 +197,7 @@ export class NavbarComponent {
   role: string = localStorage.getItem('userRole') || '';
 
   companyCode: string =
-    localStorage.getItem('userIdentityId') || '--';
+    localStorage.getItem('academyId') || '--';
 
   daysLeft = 0;
   isAdminDefault = false;
