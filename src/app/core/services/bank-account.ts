@@ -10,6 +10,7 @@ export class BankAccountService {
   page = new BehaviorSubject(0);
   limit = new BehaviorSubject(15);
   search = new BehaviorSubject('');
+  isActive = new BehaviorSubject<boolean | null>(null);
   hasChanged = new BehaviorSubject(false);
 
   accounts$: Observable<any> = this.hasChanged.pipe(
@@ -29,6 +30,19 @@ export class BankAccountService {
     // if (this.page.value !== 0) {
     //   url.searchParams.append('Page', String(this.page.value));
     // }
+
+    if (this.search.value) {
+      url.searchParams.append('search', this.search.value);
+    }
+
+
+    if (this.isActive.value !== null) {
+      url.searchParams.append(
+        'isActive',
+        String(this.isActive.value)
+      );
+    }
+
     this.search.value && url.searchParams.append('search', this.search.value);
     return this.http.get(`${url}`);
   }
@@ -49,12 +63,12 @@ export class BankAccountService {
     return this.http.patch(`${url}`, data);
   }
 
-   disabledBankAccount(BankAccountId: any) {
+  disabledBankAccount(BankAccountId: any) {
     let url = new URL(`${environment.apiUrl}bank-accounts/${BankAccountId}/disable`);
     return this.http.patch(`${url}`, null);
   }
 
-   activateBankAccount(BankAccountId: any) {
+  activateBankAccount(BankAccountId: any) {
     let url = new URL(`${environment.apiUrl}bank-accounts/${BankAccountId}/activate`);
     return this.http.patch(`${url}`, null);
   }
@@ -65,5 +79,5 @@ export class BankAccountService {
     );
     return this.http.delete(`${url}`);
   }
-  
+
 }

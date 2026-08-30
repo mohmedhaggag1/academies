@@ -3,6 +3,27 @@
     <div class="flex-auto">
       <search searchPlaceHolder="search" (valueChanged)="search($event)"></search>
     </div>
+
+
+    <div class="col-lg-3">
+      <div class="name mb-1">
+        <escoba-input key="">
+          <ng-select [items]="statusOptions" bindValue="value" [clearable]="false" [searchable]="false"
+            [(ngModel)]="selectedStatus" (ngModelChange)="statusChanged($event)">
+            <ng-template ng-label-tmp let-item="item">
+              {{ item.label | translate }}
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item">
+              {{ item.label | translate }}
+            </ng-template>
+          </ng-select>
+
+
+        </escoba-input>
+      </div>
+    </div>
+
     <button type="button" class="clickable-btn py-1 px-5 rounded bg-primary flex aic gap-x-1" (click)="accountdForm()">
       <span>
         {{ 'add_account' | translate }}
@@ -83,7 +104,7 @@
           <td class="text-center">{{account.intermediaryRate}}</td>
           <td class="text-center">{{account.marketRate}}</td>
           <td class="text-center"> {{ account.currency }} </td>
-          <td class="text-center"  [ngClass]="account.isActive ? 'green' : 'danger'">
+          <td class="text-center" [ngClass]="account.isActive ? 'green' : 'danger'">
             {{(account.isActive ? 'active' : 'inactive') | translate}}
           </td>
 
@@ -130,7 +151,9 @@
 
         }
       </tbody>
-      <not-found *ngIf="allData.length == 0 && !loading" />
+      @if (!loading && allData.length === 0) {
+      <not-found />
+      }
 
     </table>
     }

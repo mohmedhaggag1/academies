@@ -11,6 +11,15 @@
     <form [formGroup]="form">
       <div class="flex-grid">
 
+        <!-- Account Number -->
+        <div class="col-lg-12">
+          <div class="name mb-1">
+            <escoba-input key="account_number" [control]="f['accountNumber']">
+              <input type="text" class="input" formControlName="accountNumber" />
+            </escoba-input>
+          </div>
+        </div>
+
         <!-- Account Holder Name -->
         <div class="col-lg-12">
           <div class="name mb-1">
@@ -21,19 +30,10 @@
         </div>
 
         <!-- Bank Name -->
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <div class="name mb-1">
             <escoba-input key="bank_name" [control]="f['bankName']">
               <input type="text" class="input" formControlName="bankName" />
-            </escoba-input>
-          </div>
-        </div>
-
-        <!-- Account Number -->
-        <div class="col-lg-12">
-          <div class="name mb-1">
-            <escoba-input key="account_number" [control]="f['accountNumber']">
-              <input type="text" class="input" formControlName="accountNumber" />
             </escoba-input>
           </div>
         </div>

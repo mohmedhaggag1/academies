@@ -14,6 +14,9 @@ import { RouterModule } from '@angular/router';
 import { Subject, debounceTime, map } from 'rxjs';
 import { BankAccountService } from '../../core/services/bank-account';
 import { BankAccountForm } from '../../core/components/bank-account-form/bank-account-form';
+import { EscobaInputComponent } from "../../core/inputs/escoba-input.component";
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'bank-account',
@@ -26,7 +29,11 @@ import { BankAccountForm } from '../../core/components/bank-account-form/bank-ac
     MagicScrollDirective,
     MatMenuModule,
     NotFoundComponent,
-    RouterModule
+    RouterModule,
+    EscobaInputComponent,
+    NgSelectModule,
+    FormsModule
+
   ],
   templateUrl: './bank-account.html',
   styleUrl: './bank-account.scss',
@@ -41,7 +48,16 @@ export class BankAccount {
   alert = inject(AlertService)
   dialog = inject(MatDialog);
   allData: any[] = [];
+  selectedStatus = 'all'
   service = inject(BankAccountService);
+
+  statusOptions = [
+    { value: 'all', label: 'all' },
+    { value: 'active', label: 'active' },
+    { value: 'inactive', label: 'inactive' }
+
+  ];
+
   private searchSubject: Subject<string> = new Subject<string>();
 
   accounts$ = this.service.accounts$.pipe(
@@ -55,13 +71,27 @@ export class BankAccount {
   );
 
   ngOnInit() {
+    this.selectedStatus = 'all';
+
+    this.service.isActive.next(null);
     this.service.search.next('');
-    // search
-    this.searchSubject.pipe(debounceTime(500)).subscribe((value: string) => {
-      this.service.search.next(value);
-      this.service.hasChanged.next(true);
-    });
+    this.service.hasChanged.next(true);
+
+    this.searchSubject
+      .pipe(debounceTime(500))
+      .subscribe((value: string) => {
+        this.service.search.next(value);
+        this.service.hasChanged.next(true);
+      });
   }
+
+  statusChanged(event: string) {
+    this.loading = true;
+    const isActive = event === 'all' ? null : event === 'active';
+    this.service.isActive.next(isActive);
+    this.service.hasChanged.next(true);
+  }
+
 
   accountdForm(accountData?: any) {
     this.dialog.open(BankAccountForm, {
@@ -96,8 +126,6 @@ export class BankAccount {
       }
     });
   }
-
-
 
   activateAccount(accountId: any) {
     const dialogRef = this.dialog.open(ConfirmationMessageComponent, {

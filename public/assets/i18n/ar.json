@@ -96,5 +96,6 @@
   "account_activated": "تم تفعيل الحساب بنجاح",
   "account_deactivated": "تم تعطيل الحساب بنجاح",
   "activate_the_account": "هل أنت متأكد من رغبتك في تفعيل هذا الحساب؟",
-  "deactivate_the_account": "هل أنت متأكد من رغبتك في تعطيل هذا الحساب؟"
+  "deactivate_the_account": "هل أنت متأكد من رغبتك في تعطيل هذا الحساب؟",
+  "all": "الـكـل"
 }

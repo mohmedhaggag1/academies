@@ -2,3 +2,7 @@
     font-weight: bold !important;
     color:  var(--primary) !important;
 }
+
+::ng-deep .ng-select.ng-select-single .ng-select-container {
+    height: 39px !important;
+}

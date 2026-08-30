@@ -69,7 +69,7 @@ import { AuthService } from '../services/auth.service';
         >
           <div class="flex aic gap-x-2">
             <img
-              src="/icons/lock.svg"
+              src="/icons/activate.svg"
               width="15"
               height="15"
               alt="lock icon"

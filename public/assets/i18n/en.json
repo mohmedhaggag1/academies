@@ -96,5 +96,6 @@
   "account_activated": "Account activated successfully",
   "account_deactivated": "Account deactivated successfully",
   "activate_the_account": "Are you sure you want to activate this account?",
-  "deactivate_the_account": "Are you sure you want to deactivate this account?"
+  "deactivate_the_account": "Are you sure you want to deactivate this account?",
+  "all": "ALL"
 }
