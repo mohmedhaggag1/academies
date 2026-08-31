@@ -97,5 +97,11 @@
   "account_deactivated": "تم تعطيل الحساب بنجاح",
   "activate_the_account": "هل أنت متأكد من رغبتك في تفعيل هذا الحساب؟",
   "deactivate_the_account": "هل أنت متأكد من رغبتك في تعطيل هذا الحساب؟",
-  "all": "الـكـل"
+  "all": "الـكـل",
+   "activate_academy": "تفعيل الأكاديمة",
+  "deactivate_academy": "تعطيل الأكاديمة",
+  "academy_activated": "تم تفعيل الأكاديمة بنجاح",
+  "academy_deactivated": "تم تعطيل الأكاديمة بنجاح",
+  "activate_the_academy": "هل أنت متأكد من رغبتك في تفعيل هذا الأكاديمة؟",
+  "deactivate_the_academy": "هل أنت متأكد من رغبتك في تعطيل هذا الأكاديمة؟"
 }

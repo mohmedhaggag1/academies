@@ -97,5 +97,11 @@
   "account_deactivated": "Account deactivated successfully",
   "activate_the_account": "Are you sure you want to activate this account?",
   "deactivate_the_account": "Are you sure you want to deactivate this account?",
-  "all": "ALL"
+  "all": "ALL",
+  "activate_academy": "Activate Academy",
+  "deactivate_academy": "Deactivate Academy",
+  "academy_activated": "academy activated successfully",
+  "academy_deactivated": "academy deactivated successfully",
+  "activate_the_academy": "Are you sure you want to activate this academy?",
+  "deactivate_the_academy": "Are you sure you want to deactivate this academy?"
 }

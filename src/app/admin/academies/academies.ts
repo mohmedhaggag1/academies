@@ -129,7 +129,7 @@ export class Academies {
       panelClass: 'small-dialog',
       data: {
         btn_name: 'confirm',
-        message: 'activate_the_account',
+        message: 'activate_the_academy',
         classes: 'bg-primary',
       },
     });
@@ -138,7 +138,7 @@ export class Academies {
       if (res) {
         this.service.activateAcademy(academyId).subscribe((_res: any) => {
           if (_res.success) {
-            this.alert.showAlert('account_activated');
+            this.alert.showAlert('academy_activated');
             this.dialog.closeAll();
             this.service.hasChanged.next(true);
           }
@@ -152,7 +152,7 @@ export class Academies {
       panelClass: 'small-dialog',
       data: {
         btn_name: 'confirm',
-        message: 'deactivate_the_account',
+        message: 'deactivate_the_academy',
         classes: 'bg-danger',
       },
     });
@@ -161,7 +161,7 @@ export class Academies {
       if (res) {
         this.service.disabledAcademy(academyId).subscribe((_res: any) => {
           if (_res.success) {
-            this.alert.showAlert('account_deactivated');
+            this.alert.showAlert('academy_deactivated');
             this.dialog.closeAll();
             this.service.hasChanged.next(true);
           }
