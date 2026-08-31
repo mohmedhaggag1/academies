@@ -1,32 +1,32 @@
-import { AllAcademies } from './../../core/services/all-academies';
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { NotFoundComponent } from '../../core/components/not-found.component';
-import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
-import { SearchComponent } from '../../core/components/search.component';
-import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
-import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
-import { MatDialog } from '@angular/material/dialog';
-import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
-import { AlertService } from '../../core/services/alert.service';
 import { RouterModule } from '@angular/router';
 import { Subject, debounceTime, map } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { AlertService } from '../../core/services/alert.service';
+import { AllAcademies } from './../../core/services/all-academies';
+import { SearchComponent } from '../../core/components/search.component';
+import { NotFoundComponent } from '../../core/components/not-found.component';
+import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
+import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
+import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
+import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
 
 @Component({
   selector: 'app-academies',
   imports: [
     CommonModule,
-    TranslateModule,
-    NgxPaginationModule,
-    SearchComponent,
-    RectangleSkeletonComponent,
-    MagicScrollDirective,
+    RouterModule,
     MatMenuModule,
+    SearchComponent,
+    TranslateModule,
     NotFoundComponent,
-    RouterModule
+    NgxPaginationModule,
+    MagicScrollDirective,
+    RectangleSkeletonComponent,
   ],
   templateUrl: './academies.html',
   styleUrl: './academies.scss',
