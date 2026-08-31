@@ -98,10 +98,10 @@
   "activate_the_account": "هل أنت متأكد من رغبتك في تفعيل هذا الحساب؟",
   "deactivate_the_account": "هل أنت متأكد من رغبتك في تعطيل هذا الحساب؟",
   "all": "الـكـل",
-   "activate_academy": "تفعيل الأكاديمة",
-  "deactivate_academy": "تعطيل الأكاديمة",
-  "academy_activated": "تم تفعيل الأكاديمة بنجاح",
-  "academy_deactivated": "تم تعطيل الأكاديمة بنجاح",
-  "activate_the_academy": "هل أنت متأكد من رغبتك في تفعيل هذا الأكاديمة؟",
-  "deactivate_the_academy": "هل أنت متأكد من رغبتك في تعطيل هذا الأكاديمة؟"
+   "activate_academy": "تفعيل الأكادمية",
+  "deactivate_academy": "تعطيل الأكادمية",
+  "academy_activated": "تم تفعيل الأكادمية بنجاح",
+  "academy_deactivated": "تم تعطيل الأكادمية بنجاح",
+  "activate_the_academy": "هل أنت متأكد من رغبتك في تفعيل هذا الأكادمية؟",
+  "deactivate_the_academy": "هل أنت متأكد من رغبتك في تعطيل هذا الأكادمية؟"
 }
