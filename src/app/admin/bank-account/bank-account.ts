@@ -47,7 +47,8 @@ export class BankAccount {
   allData: any[] = [];
   selectedStatus = 'all'
   dialog = inject(MatDialog);
-  alert = inject(AlertService)
+  alert = inject(AlertService);
+  isRtl = document.dir === 'rtl';
   service = inject(BankAccountService);
 
   statusOptions = [

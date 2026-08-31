@@ -1,50 +1,43 @@
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatMenuModule } from '@angular/material/menu';
-import { TranslateModule } from '@ngx-translate/core';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-import { NotFoundComponent } from '../../core/components/not-found.component';
-import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
-import { SearchComponent } from '../../core/components/search.component';
-import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
-import { ConfirmationMessageComponent } from '../../core/components/confirmation-message.component';
-import { AcademyIdFormComponent } from '../../core/components/academy-id-form-component/academy-id-form-component';
-import { PriorityComponent } from '../../core/components/priority.component';
-
 import { MatDialog } from '@angular/material/dialog';
-import { AlertService } from '../../core/services/alert.service';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { AccountStatusSelect } from "../../core/components/maintenance-status-select/maintenance-status-select.component";
-import { AccountStatus } from "../../core/components/account-status/account-status";
-import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
-import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
-import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
-import { DateRange } from "../../core/components/date-range/date-range";
-import { TransferStatus } from "../../core/components/transfer-status/transfer-status"
+import { TranslateModule } from '@ngx-translate/core';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AlertService } from '../../core/services/alert.service';
+import { DateRange } from "../../core/components/date-range/date-range";
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { NotFoundComponent } from '../../core/components/not-found.component';
+import { MagicScrollDirective } from '../../core/directives/magic-scroll.directive';
+import { AccountStatus } from "../../core/components/account-status/account-status";
+import { TransferStatus } from "../../core/components/transfer-status/transfer-status"
+import { PaymentStatusComponent } from "../../core/components/payment-status/payment-status";
+import { RectangleSkeletonComponent } from '../../core/components/rectangle-skeleton.component';
 import { BulkInvoiceDialogComponent } from '../../core/components/bulk-invoice-dialog/bulk-invoice-dialog';
+import { BankAccountStatusFilter } from "../../core/components/bank-account-status-filter/bank-account-status-filter";
+import { CountryReceiptFilterComponent } from "../../core/components/country-receipt-filter/country-receipt-filter.component";
 
 @Component({
     selector: 'academy-details',
     imports: [
-        CommonModule,
+        DateRange,
         FormsModule,
-        TranslateModule,
-        NgxPaginationModule,
-        RectangleSkeletonComponent,
-        MagicScrollDirective,
+        CommonModule,
+        RouterModule,
         MatMenuModule,
-        MatCheckboxModule,
-        NotFoundComponent,
         AccountStatus,
-        CountryReceiptFilterComponent,
+        TransferStatus,
+        TranslateModule,
+        NotFoundComponent,
+        MatCheckboxModule,
+        NgxPaginationModule,
+        MagicScrollDirective,
         PaymentStatusComponent,
         BankAccountStatusFilter,
-        DateRange,
-        RouterModule,
-        TransferStatus
+        RectangleSkeletonComponent,
+        CountryReceiptFilterComponent,
     ],
 
     templateUrl: './academy-details.html',
@@ -54,30 +47,20 @@ export class AcademyDetails {
 
     loading = false;
     selectedAcademies: any[] = [];
-
     currentPage = 1;
-
     pageSize = 15;
-
     maxSize = 7;
-
     isRtl = document.dir === 'rtl';
-
     alert = inject(AlertService);
-
     activeRoute = inject(ActivatedRoute);
-
     dialog = inject(MatDialog);
-
+   
     academyId = inject(ActivatedRoute)
         .snapshot
         .paramMap
         .get('id');
-
     editingId: number | null = null;
-
     allHouseUnits: any[] = [
-
         {
             id: 1,
             code: 'ACAD-101',
