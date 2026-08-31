@@ -1,16 +1,18 @@
 <div class="academied flex-column gap-y-2 h-100 px-5 py-3">
-  <div class="top-section flex aic gap-x-2">
-    <div class="flex-auto">
+  <div class="top-section flex-grid aic gap-y-1">
+    <div class="col-lg-10">
       <search searchPlaceHolder="search"
         (valueChanged)="search($event)"></search>
     </div>
-    <button type="button"
-      class="clickable-btn py-1 px-5 rounded bg-primary flex aic gap-x-1"
+    <div class="col-lg-2">
+      <button type="button"
+      class="clickable-btn py-1 w-100 text-center rounded bg-primary flex aic jcc gap-x-1"
       (click)="academyIdForm()">
       <span>
         {{ 'add_academy' | translate }}
       </span>
     </button>
+    </div>
   </div>
 
   <div class="table-data bg-white relative height-without-tabs" magicScroll>

@@ -18,7 +18,7 @@ import { AuthGuargService } from '../services/authGuard.service';
       <div class="flex aic gap-x-2">
 
         <div class="flex aic gap-x-1 border round-25 bg-white px-1 py-50">
-          <div class="img-profile">
+          <div class="img-profile d-none d-lg-block">
             <img
               src="/icons/user.svg"
               alt="profile picture"
